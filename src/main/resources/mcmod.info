@@ -2,14 +2,14 @@
 {
   "modid": "twilight_spark_delight",
   "name": "Twilight Spark's Delight",
-  "description": "暮光农家乐，Minecraft Forge 1.12.2 addon mod.",
+  "description": "Twilight Spark's Delight / 暮光农家乐\nAn original Farmer's Delight Legacy addon for The Twilight Forest. Hunt forest creatures for new ingredients, prepare and share placeable feasts, brew full batches of potions in the Glory Crucible, explore strange experiments, and gradually unlock extended Hunger and Saturation.\n围绕暮色森林打造的原创农夫乐事附属模组。狩猎森林生物获取新食材，烹饪并分享可摆放的盛宴，使用荣耀坩埚整锅酿造药水，探索奇异实验，并随暮色进度逐步解锁额外饥饿值与饱和度。",
   "version": "${version}",
   "mcversion": "${mcversion}",
-  "url": "",
+  "url": "https://github.com/xy177/Twilight-Spark-s-Delight",
   "updateUrl": "",
   "authorList": ["xy177"],
-  "credits": "Original art and model contributors: FallenSnow21, L_CangS, thousvillages",
-  "logoFile": "",
+  "credits": "Created by xy177. Original art and models by FallenSnow21, L_CangS, and thousvillages.",
+  "logoFile": "assets/twilight_spark_delight/logo_mini.png",
   "screenshots": [],
   "dependencies": [
     "required-after:farmersdelight",
@@ -23,6 +23,6 @@
     "after:baubles",
     "after:fruits_delight_legacy"
   ],
-  "license": "Code: CC BY-NC-SA 4.0; Original assets: ARR"
+  "license": "Code: CC BY-NC-SA 4.0; original artwork and models: All Rights Reserved. See the bundled license for full terms."
 }
 ]

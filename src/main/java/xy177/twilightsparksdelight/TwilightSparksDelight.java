@@ -44,7 +44,7 @@ import xy177.twilightsparksdelight.common.tile.TileEntityNagaMixedRice;
     modid = TwilightSparksDelight.MODID,
     name = TwilightSparksDelight.NAME,
     version = TwilightSparksDelight.VERSION,
-    dependencies = "required-after:farmersdelight;required-after:twilightforest;after:futuremc;after:farmers_future_delight;after:miners_delight_bridge;after:twilightdelight;after:jei;after:tconstruct;after:baubles",
+    dependencies = "required-after:farmersdelight;required-after:twilightforest;after:futuremc;after:farmers_future_delight;after:miners_delight_bridge;after:twilightdelight;after:jei;after:tconstruct;after:baubles;after:fruits_delight_legacy",
     acceptedMinecraftVersions = "[1.12.2]"
 )
 @Mod.EventBusSubscriber(modid = TwilightSparksDelight.MODID)
