@@ -1,0 +1,12 @@
+{
+  "variants": {
+    "facing=north,support=false": {"model": "twilight_spark_delight:giant_cooking_pot"},
+    "facing=east,support=false": {"model": "twilight_spark_delight:giant_cooking_pot", "y": 90},
+    "facing=south,support=false": {"model": "twilight_spark_delight:giant_cooking_pot", "y": 180},
+    "facing=west,support=false": {"model": "twilight_spark_delight:giant_cooking_pot", "y": 270},
+    "facing=north,support=true": {"model": "twilight_spark_delight:giant_cooking_pot_tray"},
+    "facing=east,support=true": {"model": "twilight_spark_delight:giant_cooking_pot_tray", "y": 90},
+    "facing=south,support=true": {"model": "twilight_spark_delight:giant_cooking_pot_tray", "y": 180},
+    "facing=west,support=true": {"model": "twilight_spark_delight:giant_cooking_pot_tray", "y": 270}
+  }
+}

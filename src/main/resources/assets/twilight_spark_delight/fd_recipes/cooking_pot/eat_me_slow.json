@@ -1,0 +1,16 @@
+{
+  "ingredients": [
+    "twilightforest:experiment_115",
+    "minecraft:redstone_block",
+    "twilight_spark_delight:redcap_spice"
+  ],
+  "cookingtime": 9600,
+  "experience": 1.0,
+  "container": {
+    "item": "minecraft:air"
+  },
+  "result": {
+    "item": "twilight_spark_delight:eat_me",
+    "count": 9
+  }
+}

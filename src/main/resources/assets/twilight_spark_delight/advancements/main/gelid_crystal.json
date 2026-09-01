@@ -1,0 +1,26 @@
+{
+  "parent": "twilight_spark_delight:main/gourmet_hunter",
+  "display": {
+    "icon": {
+      "item": "twilight_spark_delight:gelid_crystal"
+    },
+    "title": {
+      "translate": "twilight_spark_delight.advancement.gelid_crystal"
+    },
+    "description": {
+      "translate": "twilight_spark_delight.advancement.gelid_crystal.desc"
+    },
+    "frame": "task",
+    "show_toast": true,
+    "announce_to_chat": true,
+    "hidden": false
+  },
+  "criteria": {
+    "gelid_crystal": {
+      "trigger": "minecraft:inventory_changed",
+      "conditions": {
+        "items": [{ "item": "twilight_spark_delight:gelid_crystal" }]
+      }
+    }
+  }
+}

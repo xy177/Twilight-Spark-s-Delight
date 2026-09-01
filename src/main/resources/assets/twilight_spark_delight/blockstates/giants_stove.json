@@ -1,0 +1,12 @@
+{
+  "variants": {
+    "facing=east,lit=false": {"model": "twilight_spark_delight:giants_stove"},
+    "facing=east,lit=true": {"model": "twilight_spark_delight:giants_stove"},
+    "facing=north,lit=false": {"model": "twilight_spark_delight:giants_stove"},
+    "facing=north,lit=true": {"model": "twilight_spark_delight:giants_stove"},
+    "facing=south,lit=false": {"model": "twilight_spark_delight:giants_stove"},
+    "facing=south,lit=true": {"model": "twilight_spark_delight:giants_stove"},
+    "facing=west,lit=false": {"model": "twilight_spark_delight:giants_stove"},
+    "facing=west,lit=true": {"model": "twilight_spark_delight:giants_stove"}
+  }
+}

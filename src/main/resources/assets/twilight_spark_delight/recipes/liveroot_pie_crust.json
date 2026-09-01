@@ -1,0 +1,19 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "pattern": [
+    "wMw",
+    " w "
+  ],
+  "key": {
+    "M": {
+      "type": "forge:ore_dict",
+      "ore": "listAllmilk"
+    },
+    "w": {
+      "item": "twilight_spark_delight:liveroot_cone"
+    }
+  },
+  "result": {
+    "item": "twilight_spark_delight:liveroot_pie_crust"
+  }
+}

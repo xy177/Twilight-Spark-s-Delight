@@ -1,0 +1,23 @@
+{
+  "parent": "twilight_spark_delight:main/forest_sweet",
+  "display": {
+    "icon": {
+      "item": "twilight_spark_delight:quest_ram_milk"
+    },
+    "title": {
+      "translate": "twilight_spark_delight.advancement.milk_quest_ram"
+    },
+    "description": {
+      "translate": "twilight_spark_delight.advancement.milk_quest_ram.desc"
+    },
+    "frame": "goal",
+    "show_toast": true,
+    "announce_to_chat": true,
+    "hidden": false
+  },
+  "criteria": {
+    "milk_quest_ram": {
+      "trigger": "twilight_spark_delight:milk_quest_ram"
+    }
+  }
+}

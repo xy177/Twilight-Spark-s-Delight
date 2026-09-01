@@ -1,0 +1,6 @@
+{
+    "parent":  "minecraft:block/cross",
+    "textures":  {
+                     "cross":  "twilight_spark_delight:blocks/twilight_bracken_colony_stage3"
+                 }
+}

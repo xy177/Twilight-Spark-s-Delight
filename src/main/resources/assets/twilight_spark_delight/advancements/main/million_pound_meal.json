@@ -1,0 +1,23 @@
+{
+  "parent": "twilight_spark_delight:main/root",
+  "display": {
+    "icon": {
+      "item": "twilight_spark_delight:million_pound_meal"
+    },
+    "title": {
+      "translate": "twilight_spark_delight.advancement.million_pound_meal"
+    },
+    "description": {
+      "translate": "twilight_spark_delight.advancement.million_pound_meal.desc"
+    },
+    "frame": "challenge",
+    "show_toast": true,
+    "announce_to_chat": true,
+    "hidden": true
+  },
+  "criteria": {
+    "million_pound_meal": {
+      "trigger": "twilight_spark_delight:million_pound_meal"
+    }
+  }
+}

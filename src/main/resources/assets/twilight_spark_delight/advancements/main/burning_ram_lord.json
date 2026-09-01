@@ -1,0 +1,24 @@
+{
+  "parent": "twilight_spark_delight:main/root",
+  "display": {
+    "icon": {
+      "item": "twilightforest:trophy",
+      "data": 8
+    },
+    "title": {
+      "translate": "twilight_spark_delight.advancement.burning_ram_lord"
+    },
+    "description": {
+      "translate": "twilight_spark_delight.advancement.burning_ram_lord.desc"
+    },
+    "frame": "challenge",
+    "show_toast": true,
+    "announce_to_chat": true,
+    "hidden": true
+  },
+  "criteria": {
+    "burning_ram_lord": {
+      "trigger": "twilight_spark_delight:burning_ram_lord"
+    }
+  }
+}

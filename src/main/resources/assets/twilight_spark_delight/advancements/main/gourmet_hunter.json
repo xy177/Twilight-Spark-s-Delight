@@ -1,0 +1,57 @@
+{
+  "parent": "twilight_spark_delight:main/root",
+  "display": {
+    "icon": {
+      "item": "twilightforest:magic_map"
+    },
+    "title": {
+      "translate": "twilight_spark_delight.advancement.gourmet_hunter"
+    },
+    "description": {
+      "translate": "twilight_spark_delight.advancement.gourmet_hunter.desc"
+    },
+    "frame": "task",
+    "show_toast": true,
+    "announce_to_chat": true,
+    "hidden": false
+  },
+  "criteria": {
+    "gelid_crystal": {
+      "trigger": "minecraft:inventory_changed",
+      "conditions": {
+        "items": [{ "item": "twilight_spark_delight:gelid_crystal" }]
+      }
+    },
+    "labyrinth_mushroom": {
+      "trigger": "minecraft:inventory_changed",
+      "conditions": {
+        "items": [{ "item": "twilight_spark_delight:labyrinth_mushroom" }]
+      }
+    },
+    "experiment_prototype": {
+      "trigger": "minecraft:inventory_changed",
+      "conditions": {
+        "items": [{ "item": "twilight_spark_delight:experiment_prototype" }]
+      }
+    },
+    "meef_stroganoff": {
+      "trigger": "minecraft:inventory_changed",
+      "conditions": {
+        "items": [{ "item": "twilightforest:meef_stroganoff" }]
+      }
+    },
+    "hydra_chop": {
+      "trigger": "minecraft:inventory_changed",
+      "conditions": {
+        "items": [{ "item": "twilightforest:hydra_chop" }]
+      }
+    }
+  },
+  "requirements": [[
+    "gelid_crystal",
+    "labyrinth_mushroom",
+    "experiment_prototype",
+    "meef_stroganoff",
+    "hydra_chop"
+  ]]
+}

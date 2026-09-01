@@ -1,0 +1,6 @@
+{
+  "parent": "item/generated",
+  "textures": {
+    "layer0": "twilight_spark_delight:items/twilight_cheese_fondue_companion"
+  }
+}

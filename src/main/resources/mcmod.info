@@ -1,0 +1,28 @@
+[
+{
+  "modid": "twilight_spark_delight",
+  "name": "Twilight Spark's Delight",
+  "description": "暮光农家乐，Minecraft Forge 1.12.2 addon mod.",
+  "version": "${version}",
+  "mcversion": "${mcversion}",
+  "url": "",
+  "updateUrl": "",
+  "authorList": ["xy177"],
+  "credits": "Original art and model contributors: FallenSnow21, L_CangS, thousvillages",
+  "logoFile": "",
+  "screenshots": [],
+  "dependencies": [
+    "required-after:farmersdelight",
+    "required-after:twilightforest",
+    "after:futuremc",
+    "after:farmers_future_delight",
+    "after:miners_delight_bridge",
+    "after:twilightdelight",
+    "after:jei",
+    "after:tconstruct",
+    "after:baubles",
+    "after:fruits_delight_legacy"
+  ],
+  "license": "Code: CC BY-NC-SA 4.0; Original assets: ARR"
+}
+]

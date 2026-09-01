@@ -1,0 +1,145 @@
+{
+  "forge_marker": 1,
+  "variants": {
+    "bites=0,facing=east": {
+      "model": "forge:multi-layer",
+      "y": 90,
+      "custom": {
+        "base": "twilight_spark_delight:abyss_pie_layers#body0",
+        "Cutout": "twilight_spark_delight:abyss_pie_layers#body0",
+        "Translucent": "twilight_spark_delight:abyss_pie_layers#translucent0"
+      }
+    },
+    "bites=0,facing=north": {
+      "model": "forge:multi-layer",
+      "custom": {
+        "base": "twilight_spark_delight:abyss_pie_layers#body0",
+        "Cutout": "twilight_spark_delight:abyss_pie_layers#body0",
+        "Translucent": "twilight_spark_delight:abyss_pie_layers#translucent0"
+      }
+    },
+    "bites=0,facing=south": {
+      "model": "forge:multi-layer",
+      "y": 180,
+      "custom": {
+        "base": "twilight_spark_delight:abyss_pie_layers#body0",
+        "Cutout": "twilight_spark_delight:abyss_pie_layers#body0",
+        "Translucent": "twilight_spark_delight:abyss_pie_layers#translucent0"
+      }
+    },
+    "bites=0,facing=west": {
+      "model": "forge:multi-layer",
+      "y": 270,
+      "custom": {
+        "base": "twilight_spark_delight:abyss_pie_layers#body0",
+        "Cutout": "twilight_spark_delight:abyss_pie_layers#body0",
+        "Translucent": "twilight_spark_delight:abyss_pie_layers#translucent0"
+      }
+    },
+    "bites=1,facing=east": {
+      "model": "forge:multi-layer",
+      "y": 90,
+      "custom": {
+        "base": "twilight_spark_delight:abyss_pie_layers#body1",
+        "Cutout": "twilight_spark_delight:abyss_pie_layers#body1",
+        "Translucent": "twilight_spark_delight:abyss_pie_layers#translucent1"
+      }
+    },
+    "bites=1,facing=north": {
+      "model": "forge:multi-layer",
+      "custom": {
+        "base": "twilight_spark_delight:abyss_pie_layers#body1",
+        "Cutout": "twilight_spark_delight:abyss_pie_layers#body1",
+        "Translucent": "twilight_spark_delight:abyss_pie_layers#translucent1"
+      }
+    },
+    "bites=1,facing=south": {
+      "model": "forge:multi-layer",
+      "y": 180,
+      "custom": {
+        "base": "twilight_spark_delight:abyss_pie_layers#body1",
+        "Cutout": "twilight_spark_delight:abyss_pie_layers#body1",
+        "Translucent": "twilight_spark_delight:abyss_pie_layers#translucent1"
+      }
+    },
+    "bites=1,facing=west": {
+      "model": "forge:multi-layer",
+      "y": 270,
+      "custom": {
+        "base": "twilight_spark_delight:abyss_pie_layers#body1",
+        "Cutout": "twilight_spark_delight:abyss_pie_layers#body1",
+        "Translucent": "twilight_spark_delight:abyss_pie_layers#translucent1"
+      }
+    },
+    "bites=2,facing=east": {
+      "model": "forge:multi-layer",
+      "y": 90,
+      "custom": {
+        "base": "twilight_spark_delight:abyss_pie_layers#body2",
+        "Cutout": "twilight_spark_delight:abyss_pie_layers#body2",
+        "Translucent": "twilight_spark_delight:abyss_pie_layers#translucent2"
+      }
+    },
+    "bites=2,facing=north": {
+      "model": "forge:multi-layer",
+      "custom": {
+        "base": "twilight_spark_delight:abyss_pie_layers#body2",
+        "Cutout": "twilight_spark_delight:abyss_pie_layers#body2",
+        "Translucent": "twilight_spark_delight:abyss_pie_layers#translucent2"
+      }
+    },
+    "bites=2,facing=south": {
+      "model": "forge:multi-layer",
+      "y": 180,
+      "custom": {
+        "base": "twilight_spark_delight:abyss_pie_layers#body2",
+        "Cutout": "twilight_spark_delight:abyss_pie_layers#body2",
+        "Translucent": "twilight_spark_delight:abyss_pie_layers#translucent2"
+      }
+    },
+    "bites=2,facing=west": {
+      "model": "forge:multi-layer",
+      "y": 270,
+      "custom": {
+        "base": "twilight_spark_delight:abyss_pie_layers#body2",
+        "Cutout": "twilight_spark_delight:abyss_pie_layers#body2",
+        "Translucent": "twilight_spark_delight:abyss_pie_layers#translucent2"
+      }
+    },
+    "bites=3,facing=east": {
+      "model": "forge:multi-layer",
+      "y": 90,
+      "custom": {
+        "base": "twilight_spark_delight:abyss_pie_layers#body3",
+        "Cutout": "twilight_spark_delight:abyss_pie_layers#body3",
+        "Translucent": "twilight_spark_delight:abyss_pie_layers#translucent3"
+      }
+    },
+    "bites=3,facing=north": {
+      "model": "forge:multi-layer",
+      "custom": {
+        "base": "twilight_spark_delight:abyss_pie_layers#body3",
+        "Cutout": "twilight_spark_delight:abyss_pie_layers#body3",
+        "Translucent": "twilight_spark_delight:abyss_pie_layers#translucent3"
+      }
+    },
+    "bites=3,facing=south": {
+      "model": "forge:multi-layer",
+      "y": 180,
+      "custom": {
+        "base": "twilight_spark_delight:abyss_pie_layers#body3",
+        "Cutout": "twilight_spark_delight:abyss_pie_layers#body3",
+        "Translucent": "twilight_spark_delight:abyss_pie_layers#translucent3"
+      }
+    },
+    "bites=3,facing=west": {
+      "model": "forge:multi-layer",
+      "y": 270,
+      "custom": {
+        "base": "twilight_spark_delight:abyss_pie_layers#body3",
+        "Cutout": "twilight_spark_delight:abyss_pie_layers#body3",
+        "Translucent": "twilight_spark_delight:abyss_pie_layers#translucent3"
+      }
+    }
+  }
+}
