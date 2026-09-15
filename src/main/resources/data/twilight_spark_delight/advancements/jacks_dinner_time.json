@@ -1,0 +1,50 @@
+{
+  "parent": "twilight_spark_delight:root",
+  "display": {
+    "icon": {
+      "item": "twilight_spark_delight:giants_cooking_pot"
+    },
+    "title": {
+      "translate": "twilight_spark_delight.advancement.jacks_dinner_time"
+    },
+    "description": {
+      "translate": "twilight_spark_delight.advancement.jacks_dinner_time.desc"
+    },
+    "frame": "challenge",
+    "show_toast": true,
+    "announce_to_chat": true,
+    "hidden": true
+  },
+  "criteria": {
+    "giants_stove": {
+      "trigger": "minecraft:inventory_changed",
+      "conditions": {
+        "items": [
+          {
+            "items": [
+              "twilight_spark_delight:giants_stove"
+            ]
+          }
+        ]
+      }
+    },
+    "giants_cooking_pot": {
+      "trigger": "minecraft:inventory_changed",
+      "conditions": {
+        "items": [
+          {
+            "items": [
+              "twilight_spark_delight:giants_cooking_pot"
+            ]
+          }
+        ]
+      }
+    }
+  },
+  "requirements": [
+    [
+      "giants_stove",
+      "giants_cooking_pot"
+    ]
+  ]
+}

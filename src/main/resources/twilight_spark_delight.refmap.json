@@ -1,0 +1,114 @@
+{
+  "mappings": {
+    "xy177/twilightsparksdelight/mixin/PlayerDimensionsMixin": {
+      "getDimensions": "Lnet/minecraft/world/entity/player/Player;m_6972_(Lnet/minecraft/world/entity/Pose;)Lnet/minecraft/world/entity/EntityDimensions;",
+      "getStandingEyeHeight": "Lnet/minecraft/world/entity/player/Player;m_6431_(Lnet/minecraft/world/entity/Pose;Lnet/minecraft/world/entity/EntityDimensions;)F"
+    },
+    "xy177/twilightsparksdelight/mixin/ShrinkCameraMixin": {
+      "getMaxZoom": "Lnet/minecraft/client/Camera;m_90566_(D)D",
+      "Lnet/minecraft/client/Camera;getMaxZoom(D)D": "Lnet/minecraft/client/Camera;m_90566_(D)D",
+      "getNearPlane": "Lnet/minecraft/client/Camera;m_167684_()Lnet/minecraft/client/Camera$NearPlane;",
+      "setup": "Lnet/minecraft/client/Camera;m_90575_(Lnet/minecraft/world/level/BlockGetter;Lnet/minecraft/world/entity/Entity;ZZF)V"
+    },
+    "xy177/twilightsparksdelight/mixin/HydraChopFoodMixin": {
+      "getFoodProperties": "Lnet/minecraft/world/item/Item;m_41473_()Lnet/minecraft/world/food/FoodProperties;"
+    },
+    "xy177/twilightsparksdelight/mixin/ExtendedFoodDataMixin": {
+      "eat(IF)V": "Lnet/minecraft/world/food/FoodData;m_38707_(IF)V",
+      "needsFood": "Lnet/minecraft/world/food/FoodData;m_38721_()Z",
+      "Lnet/minecraft/world/entity/player/Player;heal(F)V": "Lnet/minecraft/world/entity/player/Player;m_5634_(F)V",
+      "addExhaustion": "Lnet/minecraft/world/food/FoodData;m_38703_(F)V",
+      "setFoodLevel": "Lnet/minecraft/world/food/FoodData;m_38705_(I)V",
+      "tick": "Lnet/minecraft/world/food/FoodData;m_38710_(Lnet/minecraft/world/entity/player/Player;)V",
+      "setSaturation": "Lnet/minecraft/world/food/FoodData;m_38717_(F)V",
+      "readAdditionalSaveData": "Lnet/minecraft/world/food/FoodData;m_38715_(Lnet/minecraft/nbt/CompoundTag;)V"
+    },
+    "xy177/twilightsparksdelight/mixin/LifedrainScepterMixin": {
+      "Lnet/minecraft/world/food/FoodData;eat(IF)V": "Lnet/minecraft/world/food/FoodData;m_38707_(IF)V",
+      "onUseTick": "Ltwilightforest/item/LifedrainScepterItem;m_5929_(Lnet/minecraft/world/level/Level;Lnet/minecraft/world/entity/LivingEntity;Lnet/minecraft/world/item/ItemStack;I)V",
+      "Lnet/minecraft/world/entity/LivingEntity;hurt(Lnet/minecraft/world/damagesource/DamageSource;F)Z": "Lnet/minecraft/world/entity/LivingEntity;m_6469_(Lnet/minecraft/world/damagesource/DamageSource;F)Z",
+      "Lnet/minecraft/world/entity/LivingEntity;heal(F)V": "Lnet/minecraft/world/entity/LivingEntity;m_5634_(F)V"
+    },
+    "xy177/twilightsparksdelight/mixin/CookingPotBlockEntityMixin": {
+      "Lnet/minecraft/world/item/ItemStack;shrink(I)V": "Lnet/minecraft/world/item/ItemStack;m_41774_(I)V",
+      "Lnet/minecraft/world/item/ItemStack;is(Lnet/minecraft/world/item/Item;)Z": "Lnet/minecraft/world/item/ItemStack;m_150930_(Lnet/minecraft/world/item/Item;)Z"
+    },
+    "xy177/twilightsparksdelight/mixin/PlayerScaleRenderMixin": {
+      "scale(Lnet/minecraft/client/player/AbstractClientPlayer;Lcom/mojang/blaze3d/vertex/PoseStack;F)V": "Lnet/minecraft/client/renderer/entity/player/PlayerRenderer;m_7546_(Lnet/minecraft/client/player/AbstractClientPlayer;Lcom/mojang/blaze3d/vertex/PoseStack;F)V"
+    },
+    "xy177/twilightsparksdelight/mixin/HungerMobEffectMixin": {
+      "applyEffectTick": "Lnet/minecraft/world/effect/MobEffect;m_6742_(Lnet/minecraft/world/entity/LivingEntity;I)V",
+      "Lnet/minecraft/world/entity/player/Player;causeFoodExhaustion(F)V": "Lnet/minecraft/world/entity/player/Player;m_36399_(F)V"
+    },
+    "xy177/twilightsparksdelight/mixin/MossRandomTickMixin": {
+      "randomTick": "Lnet/minecraft/world/level/block/state/BlockBehaviour$BlockStateBase;m_222972_(Lnet/minecraft/server/level/ServerLevel;Lnet/minecraft/core/BlockPos;Lnet/minecraft/util/RandomSource;)V",
+      "isRandomlyTicking": "Lnet/minecraft/world/level/block/state/BlockBehaviour$BlockStateBase;m_60823_()Z"
+    },
+    "xy177/twilightsparksdelight/mixin/ShrinkProjectionMixin": {
+      "getProjectionMatrix": "Lnet/minecraft/client/renderer/GameRenderer;m_253088_(D)Lorg/joml/Matrix4f;"
+    },
+    "xy177/twilightsparksdelight/mixin/LootPoolAccess": {
+      "entries": "f_79023_:[Lnet/minecraft/world/level/storage/loot/entries/LootPoolEntryContainer;"
+    },
+    "xy177/twilightsparksdelight/mixin/LootTableAccess": {
+      "pools": "f_79109_:Ljava/util/List;"
+    }
+  },
+  "data": {
+    "searge": {
+      "xy177/twilightsparksdelight/mixin/PlayerDimensionsMixin": {
+        "getDimensions": "Lnet/minecraft/world/entity/player/Player;m_6972_(Lnet/minecraft/world/entity/Pose;)Lnet/minecraft/world/entity/EntityDimensions;",
+        "getStandingEyeHeight": "Lnet/minecraft/world/entity/player/Player;m_6431_(Lnet/minecraft/world/entity/Pose;Lnet/minecraft/world/entity/EntityDimensions;)F"
+      },
+      "xy177/twilightsparksdelight/mixin/ShrinkCameraMixin": {
+        "getMaxZoom": "Lnet/minecraft/client/Camera;m_90566_(D)D",
+        "Lnet/minecraft/client/Camera;getMaxZoom(D)D": "Lnet/minecraft/client/Camera;m_90566_(D)D",
+        "getNearPlane": "Lnet/minecraft/client/Camera;m_167684_()Lnet/minecraft/client/Camera$NearPlane;",
+        "setup": "Lnet/minecraft/client/Camera;m_90575_(Lnet/minecraft/world/level/BlockGetter;Lnet/minecraft/world/entity/Entity;ZZF)V"
+      },
+      "xy177/twilightsparksdelight/mixin/HydraChopFoodMixin": {
+        "getFoodProperties": "Lnet/minecraft/world/item/Item;m_41473_()Lnet/minecraft/world/food/FoodProperties;"
+      },
+      "xy177/twilightsparksdelight/mixin/ExtendedFoodDataMixin": {
+        "eat(IF)V": "Lnet/minecraft/world/food/FoodData;m_38707_(IF)V",
+        "needsFood": "Lnet/minecraft/world/food/FoodData;m_38721_()Z",
+        "Lnet/minecraft/world/entity/player/Player;heal(F)V": "Lnet/minecraft/world/entity/player/Player;m_5634_(F)V",
+        "addExhaustion": "Lnet/minecraft/world/food/FoodData;m_38703_(F)V",
+        "setFoodLevel": "Lnet/minecraft/world/food/FoodData;m_38705_(I)V",
+        "tick": "Lnet/minecraft/world/food/FoodData;m_38710_(Lnet/minecraft/world/entity/player/Player;)V",
+        "setSaturation": "Lnet/minecraft/world/food/FoodData;m_38717_(F)V",
+        "readAdditionalSaveData": "Lnet/minecraft/world/food/FoodData;m_38715_(Lnet/minecraft/nbt/CompoundTag;)V"
+      },
+      "xy177/twilightsparksdelight/mixin/LifedrainScepterMixin": {
+        "Lnet/minecraft/world/food/FoodData;eat(IF)V": "Lnet/minecraft/world/food/FoodData;m_38707_(IF)V",
+        "onUseTick": "Ltwilightforest/item/LifedrainScepterItem;m_5929_(Lnet/minecraft/world/level/Level;Lnet/minecraft/world/entity/LivingEntity;Lnet/minecraft/world/item/ItemStack;I)V",
+        "Lnet/minecraft/world/entity/LivingEntity;hurt(Lnet/minecraft/world/damagesource/DamageSource;F)Z": "Lnet/minecraft/world/entity/LivingEntity;m_6469_(Lnet/minecraft/world/damagesource/DamageSource;F)Z",
+        "Lnet/minecraft/world/entity/LivingEntity;heal(F)V": "Lnet/minecraft/world/entity/LivingEntity;m_5634_(F)V"
+      },
+      "xy177/twilightsparksdelight/mixin/CookingPotBlockEntityMixin": {
+        "Lnet/minecraft/world/item/ItemStack;shrink(I)V": "Lnet/minecraft/world/item/ItemStack;m_41774_(I)V",
+        "Lnet/minecraft/world/item/ItemStack;is(Lnet/minecraft/world/item/Item;)Z": "Lnet/minecraft/world/item/ItemStack;m_150930_(Lnet/minecraft/world/item/Item;)Z"
+      },
+      "xy177/twilightsparksdelight/mixin/PlayerScaleRenderMixin": {
+        "scale(Lnet/minecraft/client/player/AbstractClientPlayer;Lcom/mojang/blaze3d/vertex/PoseStack;F)V": "Lnet/minecraft/client/renderer/entity/player/PlayerRenderer;m_7546_(Lnet/minecraft/client/player/AbstractClientPlayer;Lcom/mojang/blaze3d/vertex/PoseStack;F)V"
+      },
+      "xy177/twilightsparksdelight/mixin/HungerMobEffectMixin": {
+        "applyEffectTick": "Lnet/minecraft/world/effect/MobEffect;m_6742_(Lnet/minecraft/world/entity/LivingEntity;I)V",
+        "Lnet/minecraft/world/entity/player/Player;causeFoodExhaustion(F)V": "Lnet/minecraft/world/entity/player/Player;m_36399_(F)V"
+      },
+      "xy177/twilightsparksdelight/mixin/MossRandomTickMixin": {
+        "randomTick": "Lnet/minecraft/world/level/block/state/BlockBehaviour$BlockStateBase;m_222972_(Lnet/minecraft/server/level/ServerLevel;Lnet/minecraft/core/BlockPos;Lnet/minecraft/util/RandomSource;)V",
+        "isRandomlyTicking": "Lnet/minecraft/world/level/block/state/BlockBehaviour$BlockStateBase;m_60823_()Z"
+      },
+      "xy177/twilightsparksdelight/mixin/ShrinkProjectionMixin": {
+        "getProjectionMatrix": "Lnet/minecraft/client/renderer/GameRenderer;m_253088_(D)Lorg/joml/Matrix4f;"
+      },
+      "xy177/twilightsparksdelight/mixin/LootPoolAccess": {
+        "entries": "f_79023_:[Lnet/minecraft/world/level/storage/loot/entries/LootPoolEntryContainer;"
+      },
+      "xy177/twilightsparksdelight/mixin/LootTableAccess": {
+        "pools": "f_79109_:Ljava/util/List;"
+      }
+    }
+  }
+}

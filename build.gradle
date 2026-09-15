@@ -1,0 +1,109 @@
+plugins {
+    id 'java-library'
+    id 'eclipse'
+    id 'idea'
+    id 'net.minecraftforge.gradle' version '6.0.54'
+    id 'org.spongepowered.mixin' version '0.7-SNAPSHOT'
+}
+
+version = mod_version
+group = mod_group_id
+base { archivesName = "${mod_id}-${minecraft_version}" }
+java.toolchain.languageVersion = JavaLanguageVersion.of(17)
+
+minecraft {
+    mappings channel: 'official', version: minecraft_version
+    copyIdeResources = true
+    runs {
+        configureEach {
+            workingDirectory project.file("run/${name}")
+            property 'forge.logging.console.level', 'info'
+            property 'forge.enabledGameTestNamespaces', mod_id
+            if (!project.hasProperty('validationJar')) {
+                mods {
+                    "${mod_id}" { source sourceSets.main }
+                }
+            }
+        }
+        client {
+            if (project.hasProperty('validationWorld')) {
+                args '--quickPlaySingleplayer', project.property('validationWorld').toString(),
+                        '--width', '1280', '--height', '900'
+                property 'tsd.clientValidation', 'true'
+                property 'tsd.validationScenario', project.findProperty('validationScenario') ?: 'recipes'
+            }
+        }
+        server { args '--nogui' }
+        gameTestServer {}
+    }
+}
+
+mixin {
+    add sourceSets.main, "${mod_id}.refmap.json"
+    config "${mod_id}.mixins.json"
+}
+
+repositories {
+    maven {
+        url = 'https://api.modrinth.com/maven'
+        content { includeGroup 'maven.modrinth' }
+    }
+    maven {
+        url = 'https://www.cursemaven.com'
+        content { includeGroup 'curse.maven' }
+    }
+    maven { url = 'https://repo.spongepowered.org/repository/maven-public/' }
+}
+
+dependencies {
+    minecraft "net.minecraftforge:forge:${minecraft_version}-${forge_version}"
+    implementation fg.deobf('maven.modrinth:R2OftAxM:SiIpcZzM') // Farmer's Delight 1.3.4
+    implementation fg.deobf('curse.maven:twilight-forest-227639:5468648') // Twilight Forest 4.3.2508
+    compileOnly fg.deobf('maven.modrinth:u6dRKJwZ:4vbuxppk') // JEI 15.59.0.210
+    compileOnly fg.deobf('maven.modrinth:EsAfCjCV:XdXDExVF') // AppleSkin 2.5.1
+    compileOnly fg.deobf('maven.modrinth:vvuO3ImH:IPQlZkz1') // Curios 5.14.1
+    compileOnly fg.deobf('maven.modrinth:g6sbyCTu:E7H5IrKI') // Fruits Delight 1.1.3
+    compileOnly fg.deobf('maven.modrinth:qMxbM4BQ:p0INUam7') // Miner's Delight test/API surface
+    annotationProcessor 'org.spongepowered:mixin:0.8.5:processor'
+    if (!project.hasProperty('withoutOptionalMods')) {
+        runtimeOnly fg.deobf('maven.modrinth:u6dRKJwZ:4vbuxppk')
+        runtimeOnly fg.deobf('maven.modrinth:EsAfCjCV:XdXDExVF')
+        runtimeOnly fg.deobf('maven.modrinth:vvuO3ImH:IPQlZkz1')
+        runtimeOnly fg.deobf('maven.modrinth:g6sbyCTu:E7H5IrKI')
+        runtimeOnly fg.deobf('maven.modrinth:d6cSefpO:toJxHyZ0') // Twilight Flavors & Delight 2.2.2
+        if (project.hasProperty('withMiners')) {
+            runtimeOnly fg.deobf('maven.modrinth:qMxbM4BQ:p0INUam7')
+        }
+    }
+}
+
+tasks.withType(JavaCompile).configureEach {
+    options.encoding = 'UTF-8'
+    options.compilerArgs += ['-Xmaxerrs', '1000']
+}
+
+tasks.named('processResources', ProcessResources).configure {
+    def properties = [
+        mod_id: mod_id, mod_version: mod_version, mod_name: mod_name,
+        mod_license: mod_license, minecraft_version_range: minecraft_version_range,
+        forge_version_range: forge_version_range, loader_version_range: loader_version_range
+    ]
+    inputs.properties properties
+    filesMatching('META-INF/mods.toml') { expand properties }
+    exclude '**/*.bbmodel'
+}
+
+tasks.named('jar', Jar).configure {
+    includeEmptyDirs = false
+    preserveFileTimestamps = false
+    reproducibleFileOrder = true
+    duplicatesStrategy = DuplicatesStrategy.EXCLUDE
+    if (!project.hasProperty('validationJar')) {
+        exclude 'xy177/twilightsparksdelight/test/**'
+    }
+    exclude 'data/twilight_spark_delight/structures/empty.nbt'
+    from 'LICENSE.md'
+    from('license') { into 'license' }
+    manifest { attributes 'MixinConfigs': "${mod_id}.mixins.json" }
+    finalizedBy 'reobfJar'
+}

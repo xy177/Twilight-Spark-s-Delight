@@ -1,0 +1,10 @@
+{
+  "type": "minecraft:smelting",
+  "category": "food",
+  "ingredient": {
+    "item": "twilight_spark_delight:liveroot_dough"
+  },
+  "result": "twilight_spark_delight:liveroot_bread",
+  "experience": 0.35,
+  "cookingtime": 200
+}

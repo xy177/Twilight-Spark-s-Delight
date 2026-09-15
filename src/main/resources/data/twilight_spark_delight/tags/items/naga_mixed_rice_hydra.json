@@ -1,0 +1,10 @@
+{
+  "replace": false,
+  "values": [
+    "twilightforest:hydra_chop",
+    {
+      "id": "twilightdelight:hydra_piece",
+      "required": false
+    }
+  ]
+}

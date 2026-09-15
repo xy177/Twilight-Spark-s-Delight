@@ -1,0 +1,31 @@
+{
+  "type": "farmersdelight:cooking",
+  "recipe_book_tab": "misc",
+  "ingredients": [
+    {
+      "item": "twilight_spark_delight:quest_ram_cheese"
+    },
+    {
+      "item": "twilight_spark_delight:labyrinth_mushroom"
+    },
+    {
+      "item": "twilight_spark_delight:labyrinth_mushroom"
+    },
+    {
+      "item": "minecraft:red_mushroom"
+    },
+    {
+      "item": "minecraft:brown_mushroom"
+    }
+  ],
+  "result": {
+    "item": "twilight_spark_delight:cream_of_labyrinth_mushroom_soup",
+    "count": 1
+  },
+  "container": {
+    "item": "minecraft:bowl",
+    "count": 1
+  },
+  "experience": 1.0,
+  "cookingtime": 200
+}

@@ -1,0 +1,19 @@
+{
+  "type": "minecraft:crafting_shapeless",
+  "category": "food",
+  "ingredients": [
+    {
+      "tag": "twilight_spark_delight:raw_meef"
+    },
+    {
+      "tag": "twilight_spark_delight:trail_rations_seasoning"
+    },
+    {
+      "tag": "twilight_spark_delight:trail_rations_mushroom"
+    }
+  ],
+  "result": {
+    "item": "twilight_spark_delight:trail_rations",
+    "count": 1
+  }
+}

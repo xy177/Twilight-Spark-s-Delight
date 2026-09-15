@@ -1,0 +1,7 @@
+{
+  "parent": "block/cube_all",
+  "textures": {
+    "all": "twilight_spark_delight:block/twilight_boar_knuckle/twilight_boar_knuckle_block",
+    "particle": "twilight_spark_delight:block/twilight_boar_knuckle/twilight_boar_knuckle_block"
+  }
+}

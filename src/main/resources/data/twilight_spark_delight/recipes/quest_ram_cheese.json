@@ -1,0 +1,34 @@
+{
+  "type": "farmersdelight:cooking",
+  "recipe_book_tab": "misc",
+  "ingredients": [
+    {
+      "item": "twilight_spark_delight:quest_ram_milk"
+    },
+    {
+      "item": "twilight_spark_delight:quest_ram_milk"
+    },
+    {
+      "item": "twilight_spark_delight:quest_ram_milk"
+    },
+    {
+      "item": "twilight_spark_delight:quest_ram_milk"
+    },
+    {
+      "item": "twilight_spark_delight:quest_ram_milk"
+    },
+    {
+      "item": "twilight_spark_delight:quest_ram_milk"
+    }
+  ],
+  "result": {
+    "item": "twilight_spark_delight:quest_ram_cheese",
+    "count": 10
+  },
+  "container": {
+    "item": "twilightforest:transformation_powder",
+    "count": 1
+  },
+  "experience": 1.0,
+  "cookingtime": 200
+}

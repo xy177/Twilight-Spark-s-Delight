@@ -1,0 +1,10 @@
+{
+  "type": "minecraft:campfire_cooking",
+  "category": "food",
+  "ingredient": {
+    "item": "twilight_spark_delight:pinch_beetle_leg"
+  },
+  "result": "twilight_spark_delight:cooked_pinch_beetle_leg",
+  "experience": 0.35,
+  "cookingtime": 600
+}

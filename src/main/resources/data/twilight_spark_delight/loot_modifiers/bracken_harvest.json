@@ -1,0 +1,8 @@
+{
+  "type": "twilight_spark_delight:bracken_harvest",
+  "conditions": [
+    {
+      "condition": "minecraft:survives_explosion"
+    }
+  ]
+}

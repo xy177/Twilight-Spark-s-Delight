@@ -1,0 +1,7 @@
+{
+  "replace": false,
+  "values": [
+    "twilight_spark_delight:liveroot_bread",
+    { "id": "#c:foods/bread", "required": false }
+  ]
+}

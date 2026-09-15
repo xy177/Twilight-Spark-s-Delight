@@ -1,0 +1,46 @@
+modLoader="javafml"
+loaderVersion="${loader_version_range}"
+license="${mod_license}"
+issueTrackerURL="https://github.com/xy177/Twilight-Spark-s-Delight/issues"
+
+[[mods]]
+modId="${mod_id}"
+version="${mod_version}"
+displayName="${mod_name}"
+displayURL="https://github.com/xy177/Twilight-Spark-s-Delight"
+logoFile="logo_mini.png"
+logoBlur=false
+authors="xy177"
+credits="FallenSnow21, L_CangS, thousvillages"
+description='''
+Twilight Spark's Delight / 暮光乐事
+A Farmer's Delight-style food expansion for The Twilight Forest.
+'''
+
+[[dependencies.${mod_id}]]
+modId="forge"
+mandatory=true
+versionRange="${forge_version_range}"
+ordering="NONE"
+side="BOTH"
+
+[[dependencies.${mod_id}]]
+modId="minecraft"
+mandatory=true
+versionRange="${minecraft_version_range}"
+ordering="NONE"
+side="BOTH"
+
+[[dependencies.${mod_id}]]
+modId="farmersdelight"
+mandatory=true
+versionRange="[1.3.4,)"
+ordering="AFTER"
+side="BOTH"
+
+[[dependencies.${mod_id}]]
+modId="twilightforest"
+mandatory=true
+versionRange="[0,)"
+ordering="AFTER"
+side="BOTH"

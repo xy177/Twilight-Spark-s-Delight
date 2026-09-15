@@ -1,0 +1,17 @@
+{
+  "type": "farmersdelight:cutting",
+  "ingredients": [
+    {
+      "item": "twilight_spark_delight:helmet_crab_leg_sushi_roll"
+    }
+  ],
+  "tool": {
+    "tag": "forge:tools/knives"
+  },
+  "result": [
+    {
+      "item": "twilight_spark_delight:helmet_crab_leg_sushi",
+      "count": 3
+    }
+  ]
+}

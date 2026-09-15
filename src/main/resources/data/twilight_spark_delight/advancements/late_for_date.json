@@ -1,0 +1,22 @@
+{
+  "parent": "twilight_spark_delight:root",
+  "display": {
+    "icon": {
+      "item": "twilight_spark_delight:rabbit_pocket_watch"
+    },
+    "title": {
+      "translate": "twilight_spark_delight.advancement.late_for_date"
+    },
+    "description": {
+      "translate": "twilight_spark_delight.advancement.late_for_date.desc"
+    },
+    "show_toast": true,
+    "announce_to_chat": true,
+    "hidden": true
+  },
+  "criteria": {
+    "late_for_date": {
+      "trigger": "twilight_spark_delight:late_for_date"
+    }
+  }
+}

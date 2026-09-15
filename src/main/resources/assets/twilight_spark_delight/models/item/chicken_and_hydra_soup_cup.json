@@ -1,0 +1,4 @@
+{
+  "parent": "item/generated",
+  "textures": {"layer0": "twilight_spark_delight:item/chicken_and_hydra_soup_cup"}
+}

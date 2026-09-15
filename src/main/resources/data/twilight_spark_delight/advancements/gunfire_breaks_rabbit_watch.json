@@ -1,0 +1,23 @@
+{
+  "parent": "twilight_spark_delight:root",
+  "display": {
+    "icon": {
+      "item": "twilight_spark_delight:rabbit_pocket_watch"
+    },
+    "title": {
+      "translate": "twilight_spark_delight.advancement.gunfire_breaks_rabbit_watch"
+    },
+    "description": {
+      "translate": "twilight_spark_delight.advancement.gunfire_breaks_rabbit_watch.desc"
+    },
+    "frame": "challenge",
+    "show_toast": true,
+    "announce_to_chat": true,
+    "hidden": true
+  },
+  "criteria": {
+    "gunfire_breaks_rabbit_watch": {
+      "trigger": "twilight_spark_delight:gunfire_breaks_rabbit_watch"
+    }
+  }
+}

@@ -1,0 +1,23 @@
+{
+  "parent": "twilight_spark_delight:forest_sweet",
+  "display": {
+    "icon": {
+      "item": "twilight_spark_delight:redcap_spice"
+    },
+    "title": {
+      "translate": "twilight_spark_delight.advancement.redcap_spice"
+    },
+    "description": {
+      "translate": "twilight_spark_delight.advancement.redcap_spice.desc"
+    },
+    "frame": "task",
+    "show_toast": true,
+    "announce_to_chat": true,
+    "hidden": false
+  },
+  "criteria": {
+    "redcap_spice": {
+      "trigger": "twilight_spark_delight:redcap_spice"
+    }
+  }
+}

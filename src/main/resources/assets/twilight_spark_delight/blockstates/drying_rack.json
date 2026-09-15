@@ -1,0 +1,6 @@
+{"variants":{
+  "facing=north":{"model":"twilight_spark_delight:block/drying_rack"},
+  "facing=east":{"model":"twilight_spark_delight:block/drying_rack","y":90},
+  "facing=south":{"model":"twilight_spark_delight:block/drying_rack","y":180},
+  "facing=west":{"model":"twilight_spark_delight:block/drying_rack","y":270}
+}}

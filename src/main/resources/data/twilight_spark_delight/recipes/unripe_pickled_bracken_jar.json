@@ -1,0 +1,38 @@
+{
+  "type": "farmersdelight:cooking",
+  "recipe_book_tab": "misc",
+  "ingredients": [
+    {
+      "item": "twilight_spark_delight:bracken"
+    },
+    {
+      "item": "twilight_spark_delight:bracken"
+    },
+    {
+      "item": "twilight_spark_delight:bracken"
+    },
+    {
+      "item": "twilight_spark_delight:bracken"
+    },
+    [
+      {
+        "item": "minecraft:water_bucket"
+      },
+      {
+        "type": "forge:partial_nbt",
+        "item": "minecraft:potion",
+        "nbt": "{Potion:\"minecraft:water\"}"
+      }
+    ]
+  ],
+  "result": {
+    "item": "twilight_spark_delight:unripe_pickled_bracken_jar",
+    "count": 1
+  },
+  "container": {
+    "item": "twilight_spark_delight:mason_jar",
+    "count": 1
+  },
+  "experience": 1.0,
+  "cookingtime": 600
+}

@@ -1,0 +1,21 @@
+{
+  "type": "farmersdelight:cutting",
+  "ingredients": [
+    {
+      "item": "twilight_spark_delight:experiment_prototype"
+    }
+  ],
+  "tool": {
+    "tag": "forge:tools/knives"
+  },
+  "result": [
+    {
+      "item": "twilight_spark_delight:experiment_000",
+      "count": 2
+    },
+    {
+      "item": "twilightforest:armor_shard",
+      "count": 9
+    }
+  ]
+}

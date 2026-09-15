@@ -1,0 +1,10 @@
+{
+  "replace": false,
+  "values": [
+    "twilightforest:raw_meef",
+    {
+      "id": "twilightdelight:raw_meef_slice",
+      "required": false
+    }
+  ]
+}

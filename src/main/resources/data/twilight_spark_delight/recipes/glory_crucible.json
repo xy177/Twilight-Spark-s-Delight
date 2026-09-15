@@ -1,0 +1,18 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "category": "misc",
+  "pattern": [
+    "K K",
+    "K K",
+    "KKK"
+  ],
+  "key": {
+    "K": {
+      "item": "twilightforest:knightmetal_ingot"
+    }
+  },
+  "result": {
+    "item": "twilight_spark_delight:glory_crucible",
+    "count": 1
+  }
+}
