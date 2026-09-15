@@ -1,0 +1,8 @@
+{
+  "parent": "minecraft:block/cube_bottom_top",
+  "textures": {
+    "side": "twilight_spark_delight:block/bracken_crate_side",
+    "bottom": "farmersdelight:block/crate_bottom",
+    "top": "twilight_spark_delight:block/bracken_crate_top"
+  }
+}

@@ -1,0 +1,24 @@
+{
+  "neoforge:conditions": [
+    {
+      "type": "neoforge:not",
+      "value": {
+        "type": "neoforge:item_exists",
+        "item": "twilightdelight:raw_meef_slice"
+      }
+    }
+  ],
+  "type": "farmersdelight:cutting",
+  "ingredients": [
+    {"item": "twilightforest:raw_meef"}
+  ],
+  "tool": {"tag": "c:tools/knife"},
+  "result": [
+    {
+      "item": {
+        "id": "twilight_spark_delight:mino_mince",
+        "count": 2
+      }
+    }
+  ]
+}

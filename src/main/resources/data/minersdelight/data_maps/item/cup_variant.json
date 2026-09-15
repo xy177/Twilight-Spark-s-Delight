@@ -1,0 +1,10 @@
+{
+  "values": {
+    "twilight_spark_delight:cream_of_labyrinth_mushroom_soup": {
+      "cup_variant": "twilight_spark_delight:cream_of_labyrinth_mushroom_soup_cup"
+    },
+    "twilight_spark_delight:bowl_of_chicken_and_hydra_soup": {
+      "cup_variant": "twilight_spark_delight:chicken_and_hydra_soup_cup"
+    }
+  }
+}

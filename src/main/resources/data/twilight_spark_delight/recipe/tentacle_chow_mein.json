@@ -1,0 +1,15 @@
+{
+  "type": "farmersdelight:cooking",
+  "recipe_book_tab": "misc",
+  "ingredients": [
+    {"item": "twilight_spark_delight:experiment_000"},
+    {"item": "twilight_spark_delight:torchberry_sauce"},
+    {"tag": "c:crops/onion"},
+    {"item": "twilight_spark_delight:redcap_spice"},
+    {"tag": "c:foods/pasta"}
+  ],
+  "result": {"id": "twilight_spark_delight:tentacle_chow_mein", "count": 1},
+  "container": {"id": "minecraft:bowl", "count": 1},
+  "experience": 1.0,
+  "cookingtime": 200
+}

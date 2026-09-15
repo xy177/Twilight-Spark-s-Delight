@@ -1,0 +1,25 @@
+{
+  "parent": "twilight_spark_delight:root",
+  "display": {
+    "icon": {
+      "id": "twilight_spark_delight:naga_mixed_rice"
+    },
+    "title": {
+      "translate": "twilight_spark_delight.advancement.time_to_even_the_scales"
+    },
+    "description": {
+      "translate": "twilight_spark_delight.advancement.time_to_even_the_scales.desc"
+    },
+    "frame": "challenge",
+    "show_toast": true,
+    "announce_to_chat": true,
+    "hidden": true
+  },
+  "criteria": {
+    "naga_mixed_rice": {
+      "trigger": "twilight_spark_delight:time_to_even_the_scales"
+    }
+  }
+}
+
+

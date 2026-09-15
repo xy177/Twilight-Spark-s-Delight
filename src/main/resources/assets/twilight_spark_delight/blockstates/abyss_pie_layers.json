@@ -1,0 +1,28 @@
+{
+  "variants": {
+    "body0": {
+      "model": "twilight_spark_delight:block/abyss_pie_body"
+    },
+    "translucent0": {
+      "model": "twilight_spark_delight:block/abyss_pie_translucent"
+    },
+    "body1": {
+      "model": "twilight_spark_delight:block/abyss_pie_slice1_body"
+    },
+    "translucent1": {
+      "model": "twilight_spark_delight:block/abyss_pie_slice1_translucent"
+    },
+    "body2": {
+      "model": "twilight_spark_delight:block/abyss_pie_slice2_body"
+    },
+    "translucent2": {
+      "model": "twilight_spark_delight:block/abyss_pie_slice2_translucent"
+    },
+    "body3": {
+      "model": "twilight_spark_delight:block/abyss_pie_slice3_body"
+    },
+    "translucent3": {
+      "model": "twilight_spark_delight:block/abyss_pie_slice3_translucent"
+    }
+  }
+}

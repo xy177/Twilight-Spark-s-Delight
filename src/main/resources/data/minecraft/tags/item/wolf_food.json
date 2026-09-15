@@ -1,0 +1,20 @@
+{
+  "replace": false,
+  "values": [
+    "#twilight_spark_delight:raw_wild_boar_meat",
+    "#twilight_spark_delight:cooked_wild_boar_meat",
+    "#twilight_spark_delight:raw_bighorn_mutton",
+    "#twilight_spark_delight:cooked_bighorn_mutton",
+    "twilight_spark_delight:hermit_crab_leg",
+    "twilight_spark_delight:cooked_hermit_crab_leg",
+    "twilight_spark_delight:pinch_beetle_leg",
+    "twilight_spark_delight:cooked_pinch_beetle_leg",
+    "twilight_spark_delight:slime_beetle_leg",
+    "twilight_spark_delight:cooked_slime_beetle_leg",
+    "twilight_spark_delight:fire_beetle_leg",
+    "twilight_spark_delight:cooked_fire_beetle_leg",
+    "twilight_spark_delight:experiment_000",
+    "twilight_spark_delight:mino_mince",
+    "twilight_spark_delight:mino_patty"
+  ]
+}

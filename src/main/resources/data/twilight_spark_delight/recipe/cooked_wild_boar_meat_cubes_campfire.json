@@ -1,0 +1,8 @@
+{
+  "type": "minecraft:campfire_cooking",
+  "category": "food",
+  "ingredient": {"item": "twilight_spark_delight:raw_wild_boar_meat_cubes"},
+  "result": {"id": "twilight_spark_delight:cooked_wild_boar_meat_cubes"},
+  "experience": 0.35,
+  "cooking_time": 600
+}

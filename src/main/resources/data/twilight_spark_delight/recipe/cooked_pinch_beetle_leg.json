@@ -1,0 +1,12 @@
+{
+  "type": "minecraft:smelting",
+  "category": "food",
+  "ingredient": {
+    "item": "twilight_spark_delight:pinch_beetle_leg"
+  },
+  "result": {
+    "id": "twilight_spark_delight:cooked_pinch_beetle_leg"
+  },
+  "experience": 0.35,
+  "cooking_time": 200
+}

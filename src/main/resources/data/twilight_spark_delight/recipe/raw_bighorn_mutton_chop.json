@@ -1,0 +1,15 @@
+{
+  "type": "farmersdelight:cutting",
+  "ingredients": [
+    {"item": "twilight_spark_delight:raw_bighorn_mutton"}
+  ],
+  "tool": {"tag": "c:tools/knife"},
+  "result": [
+    {
+      "item": {
+        "id": "twilight_spark_delight:raw_bighorn_mutton_chop",
+        "count": 2
+      }
+    }
+  ]
+}

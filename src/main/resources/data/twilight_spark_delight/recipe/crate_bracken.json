@@ -1,0 +1,7 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "category": "misc",
+  "pattern": ["BBB", "BBB", "BBB"],
+  "key": {"B": {"item": "twilight_spark_delight:bracken"}},
+  "result": {"id": "twilight_spark_delight:bracken_crate", "count": 1}
+}

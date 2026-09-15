@@ -1,0 +1,16 @@
+{
+  "type": "farmersdelight:cooking",
+  "recipe_book_tab": "misc",
+  "ingredients": [
+    {"item": "twilight_spark_delight:redcap_spice"},
+    {"tag": "twilight_spark_delight:twilight_forest_plants"},
+    {"item": "minecraft:red_mushroom"},
+    {"item": "minecraft:gunpowder"},
+    {"item": "minecraft:sugar"},
+    {"item": "minecraft:redstone"}
+  ],
+  "result": {"id": "twilight_spark_delight:redcap_spice", "count": 3},
+  "container": {"id": "farmersdelight:canvas", "count": 1},
+  "experience": 1.0,
+  "cookingtime": 60
+}

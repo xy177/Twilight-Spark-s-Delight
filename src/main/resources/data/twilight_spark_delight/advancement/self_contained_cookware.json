@@ -1,0 +1,25 @@
+{
+  "display": {
+    "icon": {
+      "id": "twilight_spark_delight:salt_helmet_crab"
+    },
+    "title": {
+      "translate": "twilight_spark_delight.advancement.self_contained_cookware"
+    },
+    "description": {
+      "translate": "twilight_spark_delight.advancement.self_contained_cookware.desc"
+    },
+    "frame": "task",
+    "show_toast": true,
+    "announce_to_chat": true,
+    "hidden": false
+  },
+  "parent": "twilight_spark_delight:forest_banquet",
+  "criteria": {
+    "self_contained_cookware": {
+      "trigger": "twilight_spark_delight:self_contained_cookware"
+    }
+  }
+}
+
+
