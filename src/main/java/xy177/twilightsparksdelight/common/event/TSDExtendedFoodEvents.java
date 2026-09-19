@@ -79,10 +79,13 @@ public final class TSDExtendedFoodEvents
     {
         FoodStats current = player.getFoodStats();
         if (current instanceof ExtendedFoodStats) {
-            ((ExtendedFoodStats) current).clamp(player);
+            ExtendedFoodStats extended = (ExtendedFoodStats) current;
+            extended.setOwnerPlayer(player);
+            extended.clamp(player);
             return;
         }
         ExtendedFoodStats extended = new ExtendedFoodStats(current);
+        extended.setOwnerPlayer(player);
         setFoodStats(player, extended);
         extended.clamp(player);
     }

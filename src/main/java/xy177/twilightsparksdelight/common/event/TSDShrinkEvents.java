@@ -15,6 +15,7 @@ import net.minecraftforge.fml.common.eventhandler.SubscribeEvent;
 import net.minecraftforge.fml.common.gameevent.TickEvent;
 import xy177.twilightsparksdelight.TwilightSparksDelight;
 import xy177.twilightsparksdelight.common.effect.ShrinkEffectHelper;
+import xy177.twilightsparksdelight.integration.aquaacrobatics.AquaAcrobaticsCompat;
 
 import java.util.UUID;
 
@@ -115,9 +116,20 @@ public final class TSDShrinkEvents
     private static void updatePlayerSize(EntityPlayer player)
     {
         float scale = ShrinkEffectHelper.getScale(player);
-        float previous = player.getEntityData().hasKey(TAG_SCALE)
-            ? player.getEntityData().getFloat(TAG_SCALE)
-            : 1.0F;
+        boolean wasScaled = player.getEntityData().hasKey(TAG_SCALE);
+        if (Math.abs(scale - 1.0F) < 0.001F && !wasScaled) {
+            return;
+        }
+
+        if (Math.abs(scale - 1.0F) < 0.001F) {
+            player.getEntityData().removeTag(TAG_SCALE);
+            player.eyeHeight = ShrinkEffectHelper.PLAYER_EYE_HEIGHT;
+            if (AquaAcrobaticsCompat.recalculateSize(player)) {
+                return;
+            }
+        }
+
+        float previous = wasScaled ? player.getEntityData().getFloat(TAG_SCALE) : 1.0F;
         float width = ShrinkEffectHelper.PLAYER_WIDTH * scale;
         if (scale < 1.0F) {
             width = Math.max(MIN_SHRINK_WIDTH, width);
@@ -133,7 +145,6 @@ public final class TSDShrinkEvents
         if (Math.abs(scale - 1.0F) > 0.001F) {
             player.getEntityData().setFloat(TAG_SCALE, scale);
         } else {
-            player.getEntityData().removeTag(TAG_SCALE);
             player.eyeHeight = player.getDefaultEyeHeight();
         }
     }

@@ -33,7 +33,8 @@ Prohibited charges include, without limitation:
 - assisted installation fees;
 - technical assistance fees;
 - file-hosting maintenance fees;
-- requiring the purchase of a file-hosting membership or any other membership service;
+- requiring users to purchase or obtain a file-hosting membership or any other membership service before they can download the Mod files;
+- imposing a substantial difference in Mod-file download speeds depending on whether a user has a file-hosting membership;
 - charges under another name that are effectively required to obtain or use the Mod.
 
 This redistribution permission covers the ARR assets only while they remain part of the complete Mod package. Separate use of the source code remains governed by CC BY-NC-SA 4.0.

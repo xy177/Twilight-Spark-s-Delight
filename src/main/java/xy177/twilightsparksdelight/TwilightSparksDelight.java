@@ -52,7 +52,7 @@ public class TwilightSparksDelight
 {
     public static final String MODID = "twilight_spark_delight";
     public static final String NAME = "Twilight Spark's Delight";
-    public static final String VERSION = "1.0.0";
+    public static final String VERSION = "1.0.1";
     public static final CreativeTabs CREATIVE_TAB = TSDCreativeTab.INSTANCE;
 
     public static Logger logger;

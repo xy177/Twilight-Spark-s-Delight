@@ -10,11 +10,16 @@ import net.minecraft.world.EnumDifficulty;
 import net.minecraftforge.fml.common.ObfuscationReflectionHelper;
 import xy177.twilightsparksdelight.common.config.TSDConfig;
 
+import java.lang.reflect.Field;
+
 public class ExtendedFoodStats extends FoodStats
 {
     public static final int MAX_FOOD = ExtendedFoodProgression.FULL_CAP;
     public static final float MAX_SATURATION = ExtendedFoodProgression.FULL_CAP;
     private EntityPlayer currentPlayer;
+    private EntityPlayer ownerPlayer;
+    private static Field appleCorePlayerField;
+    private static boolean appleCorePlayerFieldResolved;
 
     public ExtendedFoodStats()
     {
@@ -43,7 +48,22 @@ public class ExtendedFoodStats extends FoodStats
     @Override
     public void addStats(ItemFood foodItem, ItemStack stack)
     {
-        addStats(foodItem.getHealAmount(stack), foodItem.getSaturationModifier(stack));
+        EntityPlayer previousPlayer = currentPlayer;
+        currentPlayer = ownerPlayer;
+        try {
+            attachAppleCorePlayer(ownerPlayer);
+            // AppleCore injects FoodEaten into FoodStats' ItemStack-aware overload.
+            // Delegating preserves that event for Sol Carrot and other AppleCore users.
+            super.addStats(foodItem, stack);
+        } finally {
+            currentPlayer = previousPlayer;
+        }
+    }
+
+    public void setOwnerPlayer(EntityPlayer player)
+    {
+        ownerPlayer = player;
+        attachAppleCorePlayer(player);
     }
 
     @Override
@@ -188,6 +208,36 @@ public class ExtendedFoodStats extends FoodStats
     private static float getExhaustion(FoodStats stats)
     {
         return ObfuscationReflectionHelper.getPrivateValue(FoodStats.class, stats, "foodExhaustionLevel", "field_75126_c");
+    }
+
+    private void attachAppleCorePlayer(EntityPlayer player)
+    {
+        if (player == null) {
+            return;
+        }
+        Field field = getAppleCorePlayerField();
+        if (field == null) {
+            return;
+        }
+        try {
+            field.set(this, player);
+        } catch (IllegalAccessException ignored) {
+            // AppleCore is optional; its runtime-only field may not exist or be accessible.
+        }
+    }
+
+    private static Field getAppleCorePlayerField()
+    {
+        if (!appleCorePlayerFieldResolved) {
+            appleCorePlayerFieldResolved = true;
+            try {
+                appleCorePlayerField = FoodStats.class.getDeclaredField("entityplayer");
+                appleCorePlayerField.setAccessible(true);
+            } catch (NoSuchFieldException ignored) {
+                // AppleCore is not installed, so there is no compatibility field to set.
+            }
+        }
+        return appleCorePlayerField;
     }
 
     private static int getTimer(FoodStats stats)
