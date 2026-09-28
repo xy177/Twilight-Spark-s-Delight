@@ -3,6 +3,7 @@ package xy177.twilightsparksdelight.common.event;
 import com.wdcftgg.farmersdelightlegacy.common.tile.TileEntityCookingPot;
 import com.wdcftgg.farmersdelightlegacy.common.recipe.CookingPotRecipe;
 import com.wdcftgg.farmersdelightlegacy.common.recipe.manager.CookingPotRecipeManager;
+import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
 import net.minecraft.nbt.NBTTagCompound;
 import net.minecraft.entity.player.EntityPlayerMP;
@@ -37,6 +38,8 @@ public final class TSDCookingPotEvents
     private static final int EXPERIMENT_250_PROCESS_TIME = 100;
     private static final int INPUT_SLOTS = 6;
     private static final int MEAL_SLOT = 6;
+    private static final int CONTAINER_SLOT = 7;
+    private static final int OUTPUT_SLOT = 8;
 
     private TSDCookingPotEvents()
     {
@@ -52,11 +55,74 @@ public final class TSDCookingPotEvents
             if (tile instanceof TileEntityCookingPot) {
                 TileEntityCookingPot pot = (TileEntityCookingPot) tile;
                 updateNagaMixedRiceIngredient(pot);
+                convertCopperCupServing(pot);
                 updateExperiment250Upgrade(pot);
                 updateExperiment250Replication(pot);
                 updatePocketWatchReturn(pot);
             }
         }
+    }
+
+    public static boolean convertCopperCupServing(TileEntityCookingPot pot)
+    {
+        Item copperCup = ForgeRegistries.ITEMS.getValue(new ResourceLocation("miners_delight", "copper_cup"));
+        if (copperCup == null) {
+            return false;
+        }
+
+        ItemStack meal = pot.getStoredMealStack();
+        Item cupFood = getCopperCupServing(meal);
+        ItemStack storedCups = pot.getStackInSlot(CONTAINER_SLOT);
+        if (cupFood == null || storedCups.isEmpty() || storedCups.getItem() != copperCup) {
+            return false;
+        }
+
+        ItemStack output = pot.getStackInSlot(OUTPUT_SLOT);
+        if (!output.isEmpty() && output.getItem() != cupFood) {
+            return false;
+        }
+
+        int maxStackSize = Math.min(pot.getInventoryStackLimit(), new ItemStack(cupFood).getMaxStackSize());
+        int outputCount = output.isEmpty() ? 0 : output.getCount();
+        int servings = Math.min(meal.getCount(), storedCups.getCount() / 2);
+        servings = Math.min(servings, Math.max(0, (maxStackSize - outputCount) / 2));
+        if (servings <= 0) {
+            return false;
+        }
+
+        if (output.isEmpty()) {
+            pot.setInventorySlotContents(OUTPUT_SLOT, new ItemStack(cupFood, servings * 2));
+        } else {
+            output.grow(servings * 2);
+            pot.setInventorySlotContents(OUTPUT_SLOT, output);
+        }
+
+        meal.shrink(servings);
+        storedCups.shrink(servings * 2);
+        pot.setInventorySlotContents(MEAL_SLOT, meal.isEmpty() ? ItemStack.EMPTY : meal);
+        pot.setInventorySlotContents(CONTAINER_SLOT, storedCups.isEmpty() ? ItemStack.EMPTY : storedCups);
+        pot.markDirty();
+        pot.getWorld().notifyBlockUpdate(
+            pot.getPos(),
+            pot.getWorld().getBlockState(pot.getPos()),
+            pot.getWorld().getBlockState(pot.getPos()),
+            3
+        );
+        return true;
+    }
+
+    public static Item getCopperCupServing(ItemStack meal)
+    {
+        if (meal.isEmpty()) {
+            return null;
+        }
+        if (meal.getItem() == TSDItems.CREAM_OF_LABYRINTH_MUSHROOM_SOUP) {
+            return TSDItems.CREAM_OF_LABYRINTH_MUSHROOM_SOUP_CUP;
+        }
+        if (meal.getItem() == TSDItems.BOWL_OF_CHICKEN_AND_HYDRA_SOUP) {
+            return TSDItems.CHICKEN_AND_HYDRA_SOUP_CUP;
+        }
+        return null;
     }
 
     private static void updateNagaMixedRiceIngredient(TileEntityCookingPot pot)

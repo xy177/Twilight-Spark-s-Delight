@@ -4,15 +4,15 @@ import mezz.jei.api.IModPlugin;
 import mezz.jei.api.IModRegistry;
 import mezz.jei.api.JEIPlugin;
 import mezz.jei.api.recipe.IRecipeCategoryRegistration;
-import com.wdcftgg.farmersdelightlegacy.common.registry.ModBlocks;
 import com.wdcftgg.farmersdelightlegacy.api.recipe.CookingPotRecipeApi;
 import com.wdcftgg.farmersdelightlegacy.client.jei.CookingPotJeiRecipe;
+import com.wdcftgg.farmersdelightlegacy.common.registry.ModBlocks;
 import com.wdcftgg.farmersdelightlegacy.client.jei.JeiUids;
 import com.wdcftgg.farmersdelightlegacy.common.recipe.CookingPotRecipe;
 import net.minecraft.init.Blocks;
 import net.minecraft.client.resources.I18n;
-import net.minecraft.item.ItemStack;
 import net.minecraft.item.Item;
+import net.minecraft.item.ItemStack;
 import net.minecraft.util.ResourceLocation;
 import net.minecraftforge.fml.common.Loader;
 import net.minecraftforge.fml.common.registry.ForgeRegistries;
@@ -101,10 +101,10 @@ public class TwilightSparksDelightJeiPlugin implements IModPlugin
         if ("cooking_pot".equals(TSDConfig.experiment250WorkstationMode)) {
             registry.addRecipeCatalyst(new ItemStack(TSDBlocks.GIANTS_COOKING_POT), TSDJeiRecipeTypes.EXPERIMENT_250_REPLICATION);
         }
-        registerCopperCupRecipes(registry);
+        registerCopperCupJeiRecipes(registry);
     }
 
-    private static void registerCopperCupRecipes(IModRegistry registry)
+    private static void registerCopperCupJeiRecipes(IModRegistry registry)
     {
         if (!Loader.isModLoaded("miners_delight_bridge")) {
             return;

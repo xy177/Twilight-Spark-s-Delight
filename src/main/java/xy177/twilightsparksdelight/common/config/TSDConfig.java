@@ -412,7 +412,7 @@ public final class TSDConfig
                 3,
                 1,
                 16,
-                "暮色芝士火锅分食成就需要的食客人数。\nRequired diner count for Twilight Cheese Fondue sharing advancements."
+                "方块食物分食成就需要的食客人数。\nRequired diner count for block-food sharing advancements."
             );
             doubleCrownIceCreamNoFrostedChance = config.getFloat(
                 "doubleCrownIceCreamNoFrostedChance",

@@ -15,6 +15,7 @@ import xy177.twilightsparksdelight.common.block.BlockNagaMixedRice;
 import xy177.twilightsparksdelight.common.block.NagaMixedRiceStructure;
 import xy177.twilightsparksdelight.common.registry.TSDItems;
 import xy177.twilightsparksdelight.common.tile.TileEntityNagaMixedRice;
+import xy177.twilightsparksdelight.common.util.SharedFeastAdvancementHelper;
 
 import java.util.List;
 
@@ -74,6 +75,7 @@ public class NagaMixedRiceItemBlock extends ItemBlock
             return false;
         }
         NagaMixedRiceStructure.finishPlacement(world, placed, controller.getStructurePartBlock());
+        SharedFeastAdvancementHelper.recordPlacement(world, pos, player);
         if (world.getTileEntity(pos) instanceof TileEntityNagaMixedRice
             && stack.hasTagCompound() && stack.getTagCompound().hasKey(TSDItems.NAGA_MIXED_RICE_INGREDIENT_TAG, 8)) {
             ((TileEntityNagaMixedRice) world.getTileEntity(pos)).setIngredientType(

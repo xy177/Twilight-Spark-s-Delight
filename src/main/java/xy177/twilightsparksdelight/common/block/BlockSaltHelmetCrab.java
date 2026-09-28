@@ -15,7 +15,6 @@ import net.minecraft.block.state.IBlockState;
 import net.minecraft.enchantment.Enchantment;
 import net.minecraft.entity.EntityLivingBase;
 import net.minecraft.entity.player.EntityPlayer;
-import net.minecraft.entity.player.EntityPlayerMP;
 import net.minecraft.init.Enchantments;
 import net.minecraft.init.Items;
 import net.minecraft.init.SoundEvents;
@@ -33,13 +32,9 @@ import net.minecraft.util.text.TextComponentTranslation;
 import net.minecraft.world.IBlockAccess;
 import net.minecraft.world.World;
 import net.minecraftforge.fml.common.registry.ForgeRegistries;
-import xy177.twilightsparksdelight.common.config.TSDConfig;
-import xy177.twilightsparksdelight.common.event.TSDAdvancements;
 import xy177.twilightsparksdelight.common.registry.TSDItems;
 import xy177.twilightsparksdelight.common.tile.TileEntitySaltHelmetCrab;
-
-import java.util.Set;
-import java.util.UUID;
+import xy177.twilightsparksdelight.common.util.SharedFeastAdvancementHelper;
 
 public class BlockSaltHelmetCrab extends Block implements ITileEntityProvider
 {
@@ -116,7 +111,7 @@ public class BlockSaltHelmetCrab extends Block implements ITileEntityProvider
         }
         if (!world.isRemote) {
             consumeHeld(player, Items.BOWL, 3);
-            recordDiner(world, pos, player);
+            SharedFeastAdvancementHelper.recordDiner(world, pos, player);
             give(player, new ItemStack(TSDItems.BOWL_OF_SALTED_CRAB_MEAT, 3));
             setServings(world, pos, servings - 1);
             world.playSound(null, pos, ModSounds.foodTakePortion, SoundCategory.BLOCKS, 1.0F, 1.0F);
@@ -134,7 +129,7 @@ public class BlockSaltHelmetCrab extends Block implements ITileEntityProvider
             return true;
         }
         if (!world.isRemote) {
-            recordDiner(world, pos, player);
+            SharedFeastAdvancementHelper.recordDiner(world, pos, player);
             if (!player.capabilities.isCreativeMode) {
                 knife.damageItem(1, player);
             }
@@ -142,50 +137,11 @@ public class BlockSaltHelmetCrab extends Block implements ITileEntityProvider
             int nextServings = clampServings(servings - 1);
             setServings(world, pos, nextServings);
             if (nextServings == SERVINGS_LEFTOVER) {
-                finishFeast(world, pos);
+                SharedFeastAdvancementHelper.finish(world, pos);
             }
             world.playSound(null, pos, ModSounds.foodTakePortion, SoundCategory.BLOCKS, 1.0F, 1.0F);
         }
         return true;
-    }
-
-    private void recordDiner(World world, BlockPos pos, EntityPlayer player)
-    {
-        TileEntity tile = world.getTileEntity(pos);
-        if (tile instanceof TileEntitySaltHelmetCrab) {
-            TileEntitySaltHelmetCrab crab = (TileEntitySaltHelmetCrab) tile;
-            if (crab.getChef() == null) {
-                crab.setChef(player.getUniqueID());
-            }
-            crab.addDiner(player.getUniqueID());
-        }
-    }
-
-    private void finishFeast(World world, BlockPos pos)
-    {
-        TileEntity tile = world.getTileEntity(pos);
-        if (!(tile instanceof TileEntitySaltHelmetCrab)) {
-            return;
-        }
-        TileEntitySaltHelmetCrab crab = (TileEntitySaltHelmetCrab) tile;
-        UUID chef = crab.getChef();
-        Set<UUID> diners = crab.getDiners();
-        if (diners.size() < TSDConfig.twilightCheeseFondueAdvancementDinerCount) {
-            return;
-        }
-        for (EntityPlayer player : world.playerEntities) {
-            if (!(player instanceof EntityPlayerMP)) {
-                continue;
-            }
-            EntityPlayerMP mp = (EntityPlayerMP) player;
-            UUID uuid = mp.getUniqueID();
-            if (diners.contains(uuid)) {
-                TSDAdvancements.GATHERED_AROUND.trigger(mp);
-            }
-            if (chef != null && chef.equals(uuid)) {
-                TSDAdvancements.EXECUTIVE_CHEF.trigger(mp);
-            }
-        }
     }
 
     private int getServings(World world, BlockPos pos, IBlockState state)

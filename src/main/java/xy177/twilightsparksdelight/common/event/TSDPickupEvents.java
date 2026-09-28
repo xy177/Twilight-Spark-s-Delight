@@ -7,7 +7,6 @@ import net.minecraftforge.event.entity.player.EntityItemPickupEvent;
 import net.minecraftforge.fml.common.Mod;
 import net.minecraftforge.fml.common.eventhandler.SubscribeEvent;
 import xy177.twilightsparksdelight.TwilightSparksDelight;
-import xy177.twilightsparksdelight.common.item.ChefTaggedFeastItemBlock;
 import xy177.twilightsparksdelight.common.registry.TSDBlocks;
 import xy177.twilightsparksdelight.common.registry.TSDItems;
 
@@ -39,9 +38,6 @@ public final class TSDPickupEvents
         } else if (stack.getItem() == Item.getItemFromBlock(TSDBlocks.TWILIGHT_CHEESE_FONDUE)) {
             TSDAdvancements.FONDUE_FOREIGN_STYLE.trigger(player);
         } else if (stack.getItem() == Item.getItemFromBlock(TSDBlocks.SALT_HELMET_CRAB)) {
-            if (ChefTaggedFeastItemBlock.getChef(stack) == null) {
-                ChefTaggedFeastItemBlock.setChef(stack, player.getUniqueID());
-            }
             TSDAdvancements.SELF_CONTAINED_COOKWARE.trigger(player);
         }
     }

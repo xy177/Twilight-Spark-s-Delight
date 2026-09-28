@@ -99,7 +99,7 @@ The mod also includes new potion effects, placeable feasts, advancements, JEI in
 
 **Sorrow** - Softens incoming damage and may transform into a higher level of Grief under special circumstances.
 
-**Grief** - Turns accumulated sorrow into strength, increasing the damage dealt by the player.
+**Grief** - A beneficial effect that increases the player's damage by 10% per effect level. When Twilight Delight Legacy is installed, attacks also inflict Temporal Sadness on the target for 5 seconds per effect level.
 
 ## New Cookware
 

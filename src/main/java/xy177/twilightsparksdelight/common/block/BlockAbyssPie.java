@@ -3,12 +3,14 @@ package xy177.twilightsparksdelight.common.block;
 import com.wdcftgg.farmersdelightlegacy.common.block.BlockPie;
 import com.wdcftgg.farmersdelightlegacy.common.item.ItemKnife;
 import com.wdcftgg.farmersdelightlegacy.common.registry.ModSounds;
+import net.minecraft.block.ITileEntityProvider;
 import net.minecraft.block.state.BlockFaceShape;
 import net.minecraft.block.state.IBlockState;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.item.Item;
 import net.minecraft.item.ItemFood;
 import net.minecraft.item.ItemStack;
+import net.minecraft.tileentity.TileEntity;
 import net.minecraft.util.NonNullList;
 import net.minecraft.util.BlockRenderLayer;
 import net.minecraft.util.EnumFacing;
@@ -22,11 +24,13 @@ import net.minecraft.world.IBlockAccess;
 import net.minecraft.world.World;
 import net.minecraftforge.fml.common.registry.ForgeRegistries;
 import xy177.twilightsparksdelight.common.registry.TSDItems;
+import xy177.twilightsparksdelight.common.tile.TileEntityAbyssPie;
+import xy177.twilightsparksdelight.common.util.SharedFeastAdvancementHelper;
 
 import java.util.List;
 import java.util.Random;
 
-public class BlockAbyssPie extends BlockPie
+public class BlockAbyssPie extends BlockPie implements ITileEntityProvider
 {
     private static final ResourceLocation SLICE_ID = new ResourceLocation("twilight_spark_delight", "abyss_pie_slice");
     private static final AxisAlignedBB PIE_SHAPE = new AxisAlignedBB(0.0D, 0.0D, 0.0D, 1.0D, 0.5D, 1.0D);
@@ -35,6 +39,12 @@ public class BlockAbyssPie extends BlockPie
     {
         super("abyss_pie_slice");
         setTickRandomly(true);
+    }
+
+    @Override
+    public TileEntity createNewTileEntity(World world, int meta)
+    {
+        return new TileEntityAbyssPie();
     }
 
     @Override
@@ -47,6 +57,10 @@ public class BlockAbyssPie extends BlockPie
                 giveSlice(player);
                 if (!player.capabilities.isCreativeMode) {
                     held.damageItem(1, player);
+                }
+                SharedFeastAdvancementHelper.recordDiner(world, pos, player);
+                if (state.getValue(BITES) >= 3) {
+                    SharedFeastAdvancementHelper.finish(world, pos);
                 }
                 advanceBite(world, pos, state);
                 world.playSound(null, pos, ModSounds.foodSlice, SoundCategory.BLOCKS, 1.0F, 1.0F);
@@ -64,6 +78,10 @@ public class BlockAbyssPie extends BlockPie
             }
             ItemStack slice = new ItemStack(sliceItem);
             ((ItemFood) sliceItem).onItemUseFinish(slice, world, player);
+            SharedFeastAdvancementHelper.recordDiner(world, pos, player);
+            if (state.getValue(BITES) >= 3) {
+                SharedFeastAdvancementHelper.finish(world, pos);
+            }
             advanceBite(world, pos, state);
             world.playSound(null, pos, ModSounds.foodTakePortion, SoundCategory.BLOCKS, 1.0F, 1.0F);
         }

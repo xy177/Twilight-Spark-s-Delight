@@ -10,6 +10,7 @@ import net.minecraft.util.math.BlockPos;
 import net.minecraft.world.World;
 import xy177.twilightsparksdelight.common.block.BlockTwilightBoarKnuckle;
 import xy177.twilightsparksdelight.common.block.TwilightBoarKnuckleStructure;
+import xy177.twilightsparksdelight.common.util.SharedFeastAdvancementHelper;
 
 import java.util.List;
 
@@ -48,6 +49,7 @@ public class TwilightBoarKnuckleItemBlock extends ItemBlock
             return false;
         }
         TwilightBoarKnuckleStructure.finishPlacement(world, placed, controller.getStructurePartBlock());
+        SharedFeastAdvancementHelper.recordPlacement(world, controllerPos, player);
         return true;
     }
 }

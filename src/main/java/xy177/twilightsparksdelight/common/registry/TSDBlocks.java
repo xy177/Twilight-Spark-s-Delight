@@ -35,7 +35,7 @@ import xy177.twilightsparksdelight.common.block.BlockTwilightBoarKnucklePart;
 import xy177.twilightsparksdelight.common.block.BlockNagaMixedRice;
 import xy177.twilightsparksdelight.common.block.BlockNagaMixedRicePart;
 import xy177.twilightsparksdelight.common.block.BlockUnripePickledBrackenJar;
-import xy177.twilightsparksdelight.common.item.ChefTaggedFeastItemBlock;
+import xy177.twilightsparksdelight.common.item.SharedFeastItemBlock;
 import xy177.twilightsparksdelight.common.item.GiantCookingPotItemBlock;
 import xy177.twilightsparksdelight.common.item.GiantStoveItemBlock;
 import xy177.twilightsparksdelight.common.item.GiantsCookingPotItemBlock;
@@ -67,15 +67,15 @@ public final class TSDBlocks
     private static final List<Block> BLOCKS = new ArrayList<>();
     private static final List<Item> BLOCK_ITEMS = new ArrayList<>();
 
-    public static final Block TWILIGHT_CHEESE_FONDUE = register("twilight_cheese_fondue", new BlockTwilightCheeseFondue(), TSDBlocks::singleStackItemBlock);
-    public static final Block SALT_HELMET_CRAB = register("salt_helmet_crab", new BlockSaltHelmetCrab(), ChefTaggedFeastItemBlock::new);
+    public static final Block TWILIGHT_CHEESE_FONDUE = register("twilight_cheese_fondue", new BlockTwilightCheeseFondue(), SharedFeastItemBlock::new);
+    public static final Block SALT_HELMET_CRAB = register("salt_helmet_crab", new BlockSaltHelmetCrab(), SharedFeastItemBlock::new);
     public static final Block LABYRINTH_MUSHROOM_COLONY = register("labyrinth_mushroom_colony", new BlockLabyrinthMushroomColony(), LabyrinthMushroomColonyItemBlock::new);
     public static final Block TWILIGHT_BRACKEN_COLONY = register("twilight_bracken_colony", new BlockTwilightBrackenColony(), TwilightBrackenColonyItemBlock::new);
     public static final Block UNRIPE_PICKLED_BRACKEN_JAR = register("unripe_pickled_bracken_jar", new BlockUnripePickledBrackenJar(), TSDBlocks::singleStackItemBlock);
     public static final Block PICKLED_BRACKEN_JAR = register("pickled_bracken_jar", new BlockPickledBrackenJar(), TSDBlocks::singleStackItemBlock);
     public static final Block GLASS_JAR = register("glass_jar", new BlockGlassJar(), GlassJarItemBlock::new);
     public static final Block GLORY_CRUCIBLE = register("glory_crucible", new BlockGloryCrucible(), ItemBlock::new);
-    public static final Block TWILIGHT_BORSCHT = register("twilight_borscht", new BlockTwilightBorscht(), TSDBlocks::singleStackItemBlock);
+    public static final Block TWILIGHT_BORSCHT = register("twilight_borscht", new BlockTwilightBorscht(), SharedFeastItemBlock::new);
     public static final Block LABYRINTH_MUSHROOM_CRATE = register("labyrinth_mushroom_crate", createCrateBlock(), ItemBlock::new);
     public static final Block BRACKEN_CRATE = register("bracken_crate", createCrateBlock(), ItemBlock::new);
     public static final BlockNagaMixedRice NAGA_MIXED_RICE = register(
@@ -87,7 +87,7 @@ public final class TSDBlocks
         "naga_mixed_rice_part",
         new BlockNagaMixedRicePart(NAGA_MIXED_RICE)
     );
-    public static final Block ABYSS_PIE = register("abyss_pie", new BlockAbyssPie(), TSDBlocks::singleStackItemBlock);
+    public static final Block ABYSS_PIE = register("abyss_pie", new BlockAbyssPie(), SharedFeastItemBlock::new);
     public static final BlockTwilightBoarKnuckle TWILIGHT_BOAR_KNUCKLE = register(
         "twilight_boar_knuckle",
         new BlockTwilightBoarKnuckle(),

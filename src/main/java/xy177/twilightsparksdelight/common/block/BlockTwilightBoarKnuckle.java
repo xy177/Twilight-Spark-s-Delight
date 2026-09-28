@@ -31,6 +31,7 @@ import net.minecraft.world.World;
 import xy177.twilightsparksdelight.common.registry.TSDBlocks;
 import xy177.twilightsparksdelight.common.registry.TSDItems;
 import xy177.twilightsparksdelight.common.tile.TileEntityTwilightBoarKnuckle;
+import xy177.twilightsparksdelight.common.util.SharedFeastAdvancementHelper;
 
 public class BlockTwilightBoarKnuckle extends Block implements ITileEntityProvider
 {
@@ -135,11 +136,13 @@ public class BlockTwilightBoarKnuckle extends Block implements ITileEntityProvid
         }
         int stage = getStage(world, pos, state);
         if (!world.isRemote) {
+            SharedFeastAdvancementHelper.recordDiner(world, pos, player);
             if (!player.capabilities.isCreativeMode) {
                 held.shrink(1);
             }
             giveOrReplace(player, hand, new ItemStack(TSDItems.PLATE_OF_TWILIGHT_BOAR_KNUCKLE));
             if (stage >= MAX_STAGE - 1) {
+                SharedFeastAdvancementHelper.finish(world, pos);
                 spawnAsEntity(world, pos, new ItemStack(Items.BOWL));
                 spawnAsEntity(world, pos, new ItemStack(Items.DYE, 7, 15));
                 TwilightBoarKnuckleStructure.removePartsFromController(world, pos, state, this.structurePartBlock);

@@ -37,6 +37,7 @@ import xy177.twilightsparksdelight.common.tile.TileEntityGiantsStove;
 import xy177.twilightsparksdelight.common.tile.TileEntityTwilightCheeseFondue;
 import xy177.twilightsparksdelight.common.tile.TileEntityTwilightBorscht;
 import xy177.twilightsparksdelight.common.tile.TileEntityTwilightBoarKnuckle;
+import xy177.twilightsparksdelight.common.tile.TileEntityAbyssPie;
 import xy177.twilightsparksdelight.common.tile.TileEntityUnripePickledBrackenJar;
 import xy177.twilightsparksdelight.common.tile.TileEntityNagaMixedRice;
 
@@ -52,7 +53,7 @@ public class TwilightSparksDelight
 {
     public static final String MODID = "twilight_spark_delight";
     public static final String NAME = "Twilight Spark's Delight";
-    public static final String VERSION = "1.0.1";
+    public static final String VERSION = "1.0.2";
     public static final CreativeTabs CREATIVE_TAB = TSDCreativeTab.INSTANCE;
 
     public static Logger logger;
@@ -81,6 +82,7 @@ public class TwilightSparksDelight
         GameRegistry.registerTileEntity(TileEntityGiantsCookingPot.class, MODID + ":giants_cooking_pot");
         GameRegistry.registerTileEntity(TileEntityNagaMixedRice.class, MODID + ":naga_mixed_rice");
         GameRegistry.registerTileEntity(TileEntityTwilightBoarKnuckle.class, MODID + ":twilight_boar_knuckle");
+        GameRegistry.registerTileEntity(TileEntityAbyssPie.class, MODID + ":abyss_pie");
         EntityRegistry.registerModEntity(new net.minecraft.util.ResourceLocation(MODID, "pickled_bracken"), EntityThrownPickledBracken.class, "pickled_bracken", 1, this, 64, 10, true);
     }
 

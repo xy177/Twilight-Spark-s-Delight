@@ -428,7 +428,7 @@ public final class TSDRecipes
                 "twilightforest:torchberries",
                 id("liveroot_bread")
             ),
-            chefTaggedCompanion(),
+            fullDurabilityCompanion(),
             new ItemStack(Items.BOWL),
             240,
             1.0F
@@ -1058,16 +1058,10 @@ public final class TSDRecipes
         return stack;
     }
 
-    private static ItemStack chefTaggedCompanion()
+    private static ItemStack fullDurabilityCompanion()
     {
         ItemStack stack = new ItemStack(TSDItems.TWILIGHT_CHEESE_FONDUE_COMPANION);
         TwilightCheeseFondueCompanionItem.withFullDurability(stack);
-        NBTTagCompound tag = new NBTTagCompound();
-        if (stack.hasTagCompound()) {
-            tag = stack.getTagCompound();
-        }
-        tag.setBoolean("RecordChefOnCraft", true);
-        stack.setTagCompound(tag);
         return stack;
     }
 

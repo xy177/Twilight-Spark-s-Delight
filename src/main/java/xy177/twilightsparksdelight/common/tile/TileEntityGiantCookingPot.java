@@ -6,6 +6,7 @@ import com.wdcftgg.farmersdelightlegacy.common.tile.TileEntityCookingPot;
 import com.wdcftgg.farmersdelightlegacy.common.util.CookingPotParticleDispatcher;
 import com.wdcftgg.farmersdelightlegacy.common.block.BlockCookingPot;
 import net.minecraft.block.state.IBlockState;
+import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
 import net.minecraft.util.EnumFacing;
 import net.minecraft.util.math.BlockPos;
@@ -14,6 +15,7 @@ import net.minecraft.util.text.TextComponentTranslation;
 import net.minecraft.world.World;
 import xy177.twilightsparksdelight.common.config.TSDConfig;
 import xy177.twilightsparksdelight.common.block.GiantKitchenStructure;
+import xy177.twilightsparksdelight.common.event.TSDCookingPotEvents;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -39,6 +41,7 @@ public class TileEntityGiantCookingPot extends TileEntityCookingPot
             GiantKitchenStructure.repairLegacyLayout(this.world, this.pos, this.world.getBlockState(this.pos));
             this.structureChecked = true;
         }
+        TSDCookingPotEvents.convertCopperCupServing(this);
 
         CookingPotRecipe initialRecipe = findCurrentRecipe();
         if (initialRecipe != null && !canFitResult(initialRecipe.getResultStack())) {
@@ -146,6 +149,9 @@ public class TileEntityGiantCookingPot extends TileEntityCookingPot
         }
         boolean processed = current.countStoredResult(recipe.getResultStack())
             >= storedResultBefore + recipe.getResultStack().getCount();
+        if (processed) {
+            TSDCookingPotEvents.convertCopperCupServing(current);
+        }
         for (int slot = 0; slot < INPUT_SLOT_COUNT; slot++) {
             ItemStack restored = plan.originalInputs[slot].copy();
             if (processed) {
@@ -227,6 +233,7 @@ public class TileEntityGiantCookingPot extends TileEntityCookingPot
         }
 
         CookingPotRecipe.IngredientEntry ingredient = ingredients.get(ingredientIndex);
+        // Prefer one item from each distinct matching input slot before reusing a stack.
         for (int pass = 0; pass < 2; pass++) {
             for (int slot = 0; slot < INPUT_SLOT_COUNT; slot++) {
                 boolean alreadyUsed = consumedCounts[slot] > 0;
@@ -280,6 +287,25 @@ public class TileEntityGiantCookingPot extends TileEntityCookingPot
     {
         if (result.isEmpty()) {
             return false;
+        }
+        Item copperCupOutput = TSDCookingPotEvents.getCopperCupServing(result);
+        ItemStack container = getStackInSlot(7);
+        if (copperCupOutput != null && !container.isEmpty()
+            && container.getItem() == net.minecraftforge.fml.common.registry.ForgeRegistries.ITEMS.getValue(
+                new net.minecraft.util.ResourceLocation("miners_delight", "copper_cup"))) {
+            ItemStack meal = getStackInSlot(MEAL_DISPLAY_SLOT);
+            ItemStack output = getStackInSlot(OUTPUT_SLOT);
+            if (!meal.isEmpty() && !stacksMatch(meal, result)) {
+                return false;
+            }
+            ItemStack cupResult = new ItemStack(copperCupOutput);
+            if (!output.isEmpty() && !stacksMatch(output, cupResult)) {
+                return false;
+            }
+            int maxStackSize = Math.min(getInventoryStackLimit(), cupResult.getMaxStackSize());
+            int storedCount = (output.isEmpty() ? 0 : output.getCount())
+                + (meal.isEmpty() ? 0 : meal.getCount() * 2);
+            return container.getCount() >= 2 && storedCount + 2 <= maxStackSize;
         }
         ItemStack meal = getStackInSlot(MEAL_DISPLAY_SLOT);
         ItemStack output = getStackInSlot(OUTPUT_SLOT);

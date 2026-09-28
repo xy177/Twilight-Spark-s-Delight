@@ -32,6 +32,7 @@ import net.minecraftforge.fml.common.registry.ForgeRegistries;
 import xy177.twilightsparksdelight.common.registry.TSDBlocks;
 import xy177.twilightsparksdelight.common.registry.TSDItems;
 import xy177.twilightsparksdelight.common.tile.TileEntityTwilightBorscht;
+import xy177.twilightsparksdelight.common.util.SharedFeastAdvancementHelper;
 
 public class BlockTwilightBorscht extends Block implements ITileEntityProvider
 {
@@ -89,6 +90,7 @@ public class BlockTwilightBorscht extends Block implements ITileEntityProvider
         }
         int level = getLevel(world, pos, state);
         if (!world.isRemote) {
+            SharedFeastAdvancementHelper.recordDiner(world, pos, player);
             if (!player.capabilities.isCreativeMode) {
                 held.shrink(cupServing ? 2 : 1);
             }
@@ -97,6 +99,7 @@ public class BlockTwilightBorscht extends Block implements ITileEntityProvider
                 cupServing ? 2 : 1
             ));
             if (level >= MAX_LEVEL) {
+                SharedFeastAdvancementHelper.finish(world, pos);
                 world.setBlockState(pos, TSDBlocks.GLORY_CRUCIBLE.getDefaultState(), 3);
             } else {
                 setLevel(world, pos, level + 1);

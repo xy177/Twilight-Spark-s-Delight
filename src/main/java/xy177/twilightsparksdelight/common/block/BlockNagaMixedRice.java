@@ -37,6 +37,7 @@ import twilightforest.enums.BossVariant;
 import twilightforest.item.TFItems;
 import xy177.twilightsparksdelight.common.registry.TSDItems;
 import xy177.twilightsparksdelight.common.tile.TileEntityNagaMixedRice;
+import xy177.twilightsparksdelight.common.util.SharedFeastAdvancementHelper;
 
 public class BlockNagaMixedRice extends Block implements ITileEntityProvider
 {
@@ -123,8 +124,12 @@ public class BlockNagaMixedRice extends Block implements ITileEntityProvider
 
         if (stage % 4 == 3) {
             if (!world.isRemote) {
+                SharedFeastAdvancementHelper.recordDiner(world, pos, player);
                 give(player, createScaleServing());
                 setStage(world, pos, stage + 1);
+                if (stage + 1 >= MAX_STAGE) {
+                    SharedFeastAdvancementHelper.finish(world, pos);
+                }
                 world.playSound(null, pos, TFSounds.NAGA_HURT, SoundCategory.BLOCKS, 1.0F, 1.0F);
             }
             return true;
@@ -141,6 +146,7 @@ public class BlockNagaMixedRice extends Block implements ITileEntityProvider
             return true;
         }
         if (!world.isRemote) {
+            SharedFeastAdvancementHelper.recordDiner(world, pos, player);
             if (!player.capabilities.isCreativeMode) {
                 held.shrink(cupServing ? 2 : 1);
             }

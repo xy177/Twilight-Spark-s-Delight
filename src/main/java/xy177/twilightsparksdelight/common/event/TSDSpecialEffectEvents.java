@@ -47,6 +47,7 @@ public final class TSDSpecialEffectEvents
     private static boolean hydraChopAdjusted;
     private static final ResourceLocation FROSTED = new ResourceLocation("twilightforest", "frosted");
     private static final ResourceLocation FIRE_RESISTANCE = new ResourceLocation("minecraft", "fire_resistance");
+    private static final ResourceLocation TEMPORAL_SADNESS = new ResourceLocation("twilightdelight", "temporal_sadness");
 
     private TSDSpecialEffectEvents()
     {
@@ -92,7 +93,7 @@ public final class TSDSpecialEffectEvents
             EntityPlayer player = (EntityPlayer) event.getSource().getImmediateSource();
             if (!player.world.isRemote) {
                 applyChargeAttackBonus(player, event);
-                applyGriefAttackBonus(player, event);
+                applyGriefAttackBonus(player, event, event.getEntityLiving());
                 applyAbyssCall(player, event.getEntityLiving());
             }
         }
@@ -285,7 +286,7 @@ public final class TSDSpecialEffectEvents
         }
     }
 
-    private static void applyGriefAttackBonus(EntityPlayer player, LivingHurtEvent event)
+    private static void applyGriefAttackBonus(EntityPlayer player, LivingHurtEvent event, EntityLivingBase target)
     {
         PotionEffect effect = player.getActivePotionEffect(TSDPotions.GRIEF);
         if (effect == null || event.getAmount() <= 0.0F) {
@@ -293,6 +294,20 @@ public final class TSDSpecialEffectEvents
         }
         double bonus = (effect.getAmplifier() + 1) * 0.10D;
         event.setAmount((float) (event.getAmount() * (1.0D + bonus)));
+
+        if (!Loader.isModLoaded("twilightdelight") || target == null || target == player) {
+            return;
+        }
+        Potion temporalSadness = ForgeRegistries.POTIONS.getValue(TEMPORAL_SADNESS);
+        if (temporalSadness != null) {
+            target.addPotionEffect(new PotionEffect(
+                temporalSadness,
+                100 * (effect.getAmplifier() + 1),
+                0,
+                false,
+                false
+            ));
+        }
     }
 
     private static void applyAbyssCall(EntityPlayer player, EntityLivingBase target)

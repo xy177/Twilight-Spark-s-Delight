@@ -4,7 +4,11 @@ import com.wdcftgg.farmersdelightlegacy.common.block.BlockCuttingBoard;
 import com.wdcftgg.farmersdelightlegacy.common.registry.ModSounds;
 import com.wdcftgg.farmersdelightlegacy.common.tile.TileEntityCuttingBoard;
 import com.wdcftgg.farmersdelightlegacy.common.tile.TileEntityCookingPot;
+import com.wdcftgg.farmersdelightlegacy.common.recipe.CookingPotRecipe;
+import com.wdcftgg.farmersdelightlegacy.common.recipe.manager.CookingPotRecipeManager;
 import net.minecraft.inventory.InventoryHelper;
+import net.minecraft.inventory.Container;
+import net.minecraft.inventory.Slot;
 import net.minecraft.entity.EntityLivingBase;
 import net.minecraft.entity.EntityList;
 import net.minecraft.entity.player.EntityPlayer;
@@ -24,6 +28,7 @@ import net.minecraft.item.Item;
 import net.minecraftforge.fml.common.registry.ForgeRegistries;
 import net.minecraftforge.fml.common.Loader;
 import net.minecraftforge.event.entity.player.PlayerInteractEvent;
+import net.minecraftforge.event.entity.player.PlayerContainerEvent;
 import net.minecraftforge.fml.common.Mod;
 import net.minecraftforge.fml.common.eventhandler.EventPriority;
 import net.minecraftforge.fml.common.eventhandler.SubscribeEvent;
@@ -31,6 +36,7 @@ import xy177.twilightsparksdelight.TwilightSparksDelight;
 import xy177.twilightsparksdelight.common.config.TSDConfig;
 import xy177.twilightsparksdelight.common.experiment.Experiment250Logic;
 import xy177.twilightsparksdelight.common.item.Experiment250Item;
+import xy177.twilightsparksdelight.common.inventory.CopperCupCookingPotSlot;
 import xy177.twilightsparksdelight.common.registry.TSDBlocks;
 import xy177.twilightsparksdelight.common.registry.TSDItems;
 import xy177.twilightsparksdelight.common.tile.TileEntityUnripePickledBrackenJar;
@@ -40,6 +46,36 @@ public final class TSDInteractionEvents
 {
     private TSDInteractionEvents()
     {
+    }
+
+    @SubscribeEvent
+    public static void onContainerOpen(PlayerContainerEvent.Open event)
+    {
+        if (!Loader.isModLoaded("miners_delight_bridge")) {
+            return;
+        }
+        allowCopperCupContainerSlot(event.getContainer());
+    }
+
+    public static void allowCopperCupContainerSlot(Container container)
+    {
+        for (int index = 0; index < container.inventorySlots.size(); index++) {
+            Slot slot = container.inventorySlots.get(index);
+            if (!(slot.inventory instanceof TileEntityCookingPot)
+                || slot.getSlotIndex() != 7
+                || slot instanceof CopperCupCookingPotSlot) {
+                continue;
+            }
+            TileEntityCookingPot pot = (TileEntityCookingPot) slot.inventory;
+            CopperCupCookingPotSlot replacement = new CopperCupCookingPotSlot(
+                pot,
+                slot.getSlotIndex(),
+                slot.xPos,
+                slot.yPos
+            );
+            replacement.slotNumber = slot.slotNumber;
+            container.inventorySlots.set(index, replacement);
+        }
     }
 
     @SubscribeEvent(priority = EventPriority.HIGHEST)
@@ -59,11 +95,7 @@ public final class TSDInteractionEvents
         }
         TileEntityCookingPot pot = (TileEntityCookingPot) tile;
         Item cupFood = getCupServing(pot.getStoredMealStack());
-        if (cupFood == null) {
-            return;
-        }
-
-        if (held.getCount() >= 2 && !event.getWorld().isRemote) {
+        if (cupFood != null && held.getCount() >= 2 && !event.getWorld().isRemote) {
             pot.decrStackSize(6, 1);
             pot.awardExperience(event.getEntityPlayer(), 1);
             if (!event.getEntityPlayer().capabilities.isCreativeMode) {
@@ -77,9 +109,59 @@ public final class TSDInteractionEvents
                 event.getWorld().getBlockState(event.getPos()),
                 3
             );
+            event.setCanceled(true);
+            event.setCancellationResult(EnumActionResult.SUCCESS);
+            return;
         }
-        event.setCanceled(true);
-        event.setCancellationResult(EnumActionResult.SUCCESS);
+
+        if (canUseCopperCupsForCurrentRecipe(pot) && held.getCount() >= 2) {
+            if (!event.getWorld().isRemote) {
+                insertCopperCups(pot, held, event.getEntityPlayer().capabilities.isCreativeMode);
+            }
+            event.setCanceled(true);
+            event.setCancellationResult(EnumActionResult.SUCCESS);
+        }
+    }
+
+    private static boolean canUseCopperCupsForCurrentRecipe(TileEntityCookingPot pot)
+    {
+        java.util.List<ItemStack> inputs = new java.util.ArrayList<>(6);
+        for (int slot = 0; slot < 6; slot++) {
+            inputs.add(pot.getStackInSlot(slot));
+        }
+        CookingPotRecipe recipe = CookingPotRecipeManager.findRecipe(inputs);
+        return recipe != null && getCupServing(recipe.getResultStack()) != null;
+    }
+
+    private static void insertCopperCups(TileEntityCookingPot pot, ItemStack held, boolean creativeMode)
+    {
+        ItemStack stored = pot.getStackInSlot(7);
+        if (!stored.isEmpty() && stored.getItem() != held.getItem()) {
+            return;
+        }
+        int capacity = stored.isEmpty() ? held.getMaxStackSize() : stored.getMaxStackSize() - stored.getCount();
+        int inserted = Math.min(capacity, held.getCount());
+        if (inserted < 2) {
+            return;
+        }
+        if (stored.isEmpty()) {
+            ItemStack cups = held.copy();
+            cups.setCount(inserted);
+            pot.setInventorySlotContents(7, cups);
+        } else {
+            stored.grow(inserted);
+            pot.setInventorySlotContents(7, stored);
+        }
+        if (!creativeMode) {
+            held.shrink(inserted);
+        }
+        pot.markDirty();
+        pot.getWorld().notifyBlockUpdate(
+            pot.getPos(),
+            pot.getWorld().getBlockState(pot.getPos()),
+            pot.getWorld().getBlockState(pot.getPos()),
+            3
+        );
     }
 
     private static Item getCupServing(ItemStack meal)

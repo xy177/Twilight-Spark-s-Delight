@@ -13,7 +13,6 @@ import net.minecraft.block.state.BlockStateContainer;
 import net.minecraft.block.state.IBlockState;
 import net.minecraft.entity.EntityLivingBase;
 import net.minecraft.entity.player.EntityPlayer;
-import net.minecraft.entity.player.EntityPlayerMP;
 import net.minecraft.init.SoundEvents;
 import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
@@ -29,14 +28,10 @@ import net.minecraft.util.text.TextComponentTranslation;
 import net.minecraft.world.IBlockAccess;
 import net.minecraft.world.World;
 import net.minecraftforge.fml.common.registry.ForgeRegistries;
-import xy177.twilightsparksdelight.common.config.TSDConfig;
-import xy177.twilightsparksdelight.common.event.TSDAdvancements;
 import xy177.twilightsparksdelight.common.item.TwilightCheeseFondueCompanionItem;
 import xy177.twilightsparksdelight.common.registry.TSDItems;
 import xy177.twilightsparksdelight.common.tile.TileEntityTwilightCheeseFondue;
-
-import java.util.Set;
-import java.util.UUID;
+import xy177.twilightsparksdelight.common.util.SharedFeastAdvancementHelper;
 
 public class BlockTwilightCheeseFondue extends Block implements ITileEntityProvider
 {
@@ -131,57 +126,17 @@ public class BlockTwilightCheeseFondue extends Block implements ITileEntityProvi
         }
 
         if (!world.isRemote) {
-            TwilightCheeseFondueCompanionItem.addDiner(companion, player.getUniqueID());
-            UUID chef = TwilightCheeseFondueCompanionItem.getChef(companion);
-            if (chef == null) {
-                chef = player.getUniqueID();
-                TwilightCheeseFondueCompanionItem.setChef(companion, chef);
-            }
-            TileEntity tile = world.getTileEntity(pos);
-            if (tile instanceof TileEntityTwilightCheeseFondue) {
-                TileEntityTwilightCheeseFondue fondue = (TileEntityTwilightCheeseFondue) tile;
-                if (fondue.getChef() == null) {
-                    fondue.setChef(chef);
-                }
-                fondue.addDiner(player.getUniqueID());
-            }
+            SharedFeastAdvancementHelper.recordDiner(world, pos, player);
             TwilightCheeseFondueCompanionItem.damageCompanion(companion, player);
             give(player, new ItemStack(TSDItems.TWILIGHT_CHEESE_FONDUE_WITH_BREAD));
             int nextServings = clampServings(servings - 1);
             setServings(world, pos, nextServings);
             if (nextServings == SERVINGS_LEFTOVER) {
-                finishFeast(world, pos, chef);
+                SharedFeastAdvancementHelper.finish(world, pos);
             }
             world.playSound(null, pos, ModSounds.foodTakePortion, SoundCategory.BLOCKS, 1.0F, 1.0F);
         }
         return true;
-    }
-
-    private void finishFeast(World world, BlockPos pos, UUID itemChef)
-    {
-        TileEntity tile = world.getTileEntity(pos);
-        if (!(tile instanceof TileEntityTwilightCheeseFondue)) {
-            return;
-        }
-        TileEntityTwilightCheeseFondue fondue = (TileEntityTwilightCheeseFondue) tile;
-        UUID chef = fondue.getChef() == null ? itemChef : fondue.getChef();
-        Set<UUID> diners = fondue.getDiners();
-        if (diners.size() < TSDConfig.twilightCheeseFondueAdvancementDinerCount) {
-            return;
-        }
-        for (EntityPlayer player : world.playerEntities) {
-            if (!(player instanceof EntityPlayerMP)) {
-                continue;
-            }
-            EntityPlayerMP mp = (EntityPlayerMP) player;
-            UUID uuid = mp.getUniqueID();
-            if (diners.contains(uuid)) {
-                TSDAdvancements.GATHERED_AROUND.trigger(mp);
-            }
-            if (chef != null && chef.equals(uuid)) {
-                TSDAdvancements.EXECUTIVE_CHEF.trigger(mp);
-            }
-        }
     }
 
     private int getServings(World world, BlockPos pos, IBlockState state)
